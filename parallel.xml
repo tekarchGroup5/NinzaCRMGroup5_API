@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="3" parallel="methods" name="ParallelSuite">
+	<parameter name="bName" value="chrome" ></parameter>
+		
+
+  <test name="ChromeTest">
+    <classes>
+      <class name="tests.Crm_CampaignTest"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- ParallelSuite -->

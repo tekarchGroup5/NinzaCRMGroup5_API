@@ -1,0 +1,650 @@
+2025-07-31-20:29:46 DEBUG Parsing relationship: /xl/_rels/workbook.xml.rels
+2025-07-31-20:29:46 DEBUG Parsing relationship: /_rels/.rels
+2025-07-31-20:29:46 TRACE Loading type system org.apache.poi.schemas.ooxml.system.ooxml
+2025-07-31-20:29:46 TRACE Loading type system org.apache.xmlbeans.metadata.system.sXMLCONFIG
+2025-07-31-20:29:46 TRACE Loading type system org.apache.xmlbeans.metadata.system.sXMLLANG
+2025-07-31-20:29:46 TRACE Loading type system org.apache.xmlbeans.metadata.system.sXMLSCHEMA
+2025-07-31-20:29:46 TRACE Loading type system org.apache.xmlbeans.metadata.system.sXMLTOOLS
+2025-07-31-20:29:46 TRACE Reading unresolved handles for type system org.apache.xmlbeans.metadata.system.sXMLTOOLS
+2025-07-31-20:29:46 TRACE Finished loading type system org.apache.xmlbeans.metadata.system.sXMLTOOLS
+2025-07-31-20:29:46 TRACE Reading unresolved handles for type system org.apache.xmlbeans.metadata.system.sXMLSCHEMA
+2025-07-31-20:29:46 TRACE Finished loading type system org.apache.xmlbeans.metadata.system.sXMLSCHEMA
+2025-07-31-20:29:46 TRACE Reading unresolved handles for type system org.apache.xmlbeans.metadata.system.sXMLLANG
+2025-07-31-20:29:46 TRACE Finished loading type system org.apache.xmlbeans.metadata.system.sXMLLANG
+2025-07-31-20:29:46 TRACE Reading unresolved handles for type system org.apache.xmlbeans.metadata.system.sXMLCONFIG
+2025-07-31-20:29:46 TRACE Finished loading type system org.apache.xmlbeans.metadata.system.sXMLCONFIG
+2025-07-31-20:29:46 TRACE Reading unresolved handles for type system org.apache.poi.schemas.ooxml.system.ooxml
+2025-07-31-20:29:46 TRACE Finished loading type system org.apache.poi.schemas.ooxml.system.ooxml
+2025-07-31-20:29:46 TRACE Resolving type for handle themefd26doctype
+2025-07-31-20:29:46 TRACE Resolving type for handle stylesheet5d8bdoctype
+2025-07-31-20:29:46 TRACE Resolving type for handle ctstylesheet4257type
+2025-07-31-20:29:46 TRACE Resolving type for handle ctfonts6623type
+2025-07-31-20:29:46 TRACE Resolving type for handle ctfont14d8type
+2025-07-31-20:29:46 TRACE Resolving type for handle ctfills2c6ftype
+2025-07-31-20:29:46 TRACE Resolving type for handle ctfill550ctype
+2025-07-31-20:29:46 TRACE Resolving type for handle ctborders0d66type
+2025-07-31-20:29:46 TRACE Resolving type for handle ctborderf935type
+2025-07-31-20:29:46 TRACE Resolving type for handle ctcellxfs1322type
+2025-07-31-20:29:46 TRACE Resolving type for handle ctxf97f7type
+2025-07-31-20:29:46 TRACE Resolving type for handle ctcellstylexfsa81ftype
+2025-07-31-20:29:46 TRACE Resolving type for handle ctdxfsb26atype
+2025-07-31-20:29:46 TRACE Resolving type for handle cttablestyles872ftype
+2025-07-31-20:29:46 TRACE Resolving type for handle sstf81fdoctype
+2025-07-31-20:29:46 TRACE Resolving type for handle ctsst44f3type
+2025-07-31-20:29:46 TRACE Resolving type for handle ctrsta472type
+2025-07-31-20:29:46 TRACE Resolving type for handle workbookec17doctype
+2025-07-31-20:29:46 TRACE Resolving type for handle ctworkbook83c3type
+2025-07-31-20:29:46 TRACE Resolving type for handle ctsheets49fdtype
+2025-07-31-20:29:46 TRACE Resolving type for handle ctsheet4dbetype
+2025-07-31-20:29:46 TRACE Resolving type for handle strelationshipid1e94type
+2025-07-31-20:29:46 TRACE Resolving type for handle worksheetf539doctype
+2025-07-31-20:29:46 TRACE Resolving type for handle ctworksheet530dtype
+2025-07-31-20:29:46 TRACE Resolving type for handle ctcols627ctype
+2025-07-31-20:29:46 TRACE Resolving type for handle ctcola95ftype
+2025-07-31-20:29:46 TRACE Resolving type for handle ctsheetdata8408type
+2025-07-31-20:29:46 TRACE Resolving type for handle ctrowdd39type
+2025-07-31-20:29:46 TRACE Resolving type for handle ctcell842btype
+2025-07-31-20:29:47 TRACE Resolving type for handle stcellrefe4e0type
+2025-07-31-20:29:47 TRACE Resolving type for handle stxstringf179type
+2025-07-31-20:29:47 TRACE Resolving type for handle stcelltypebf95type
+2025-07-31-20:29:47 TRACE Resolving type for handle stcellstylexfid70c7type
+2025-07-31-20:29:47 TRACE Resolving type for handle stnumfmtid76fbtype
+2025-07-31-20:29:47 TRACE Resolving type for handle ctworkbookpr03a5type
+2025-07-31-20:29:54 INFO  Navigated to CRM URL: http://49.249.28.218:8098/
+2025-07-31-20:29:54 DEBUG Navigated to the login page: http://49.249.28.218:8098/
+2025-07-31-20:29:55 DEBUG Username is entered
+2025-07-31-20:29:55 DEBUG Password is entered
+2025-07-31-20:29:55 DEBUG Sign In button clicked
+2025-07-31-20:29:55 DEBUG Login successful, landed on Home Page.
+2025-07-31-20:29:55 DEBUG Checking if user is on CRM Home Page
+2025-07-31-20:29:55 INFO  Login to Ninza CRM validated successfully.
+2025-07-31-20:29:56 DEBUG Opportunities link clicked
+2025-07-31-20:29:56 INFO  Create Opportunity button is clicked
+2025-07-31-20:29:56 INFO  Opportunity name is entered
+2025-07-31-20:29:57 INFO  Business type is left blank
+2025-07-31-20:29:57 INFO  Amount is entered
+2025-07-31-20:29:57 INFO  Next step is entered
+2025-07-31-20:29:58 INFO  Sales stage is entered
+2025-07-31-20:30:08 INFO  lead is selected
+2025-07-31-20:30:08 INFO  Create Opportunity button is clicked
+2025-07-31-20:30:08 INFO  Error is: Please fill out this field.
+2025-07-31-20:30:08 INFO  Business Type field validation tested successfully
+2025-07-31-20:30:08 DEBUG Parsing relationship: /xl/_rels/workbook.xml.rels
+2025-07-31-20:30:08 DEBUG Parsing relationship: /_rels/.rels
+2025-07-31-20:30:15 INFO  Navigated to CRM URL: http://49.249.28.218:8098/
+2025-07-31-20:30:15 DEBUG Navigated to the login page: http://49.249.28.218:8098/
+2025-07-31-20:30:15 DEBUG Username is entered
+2025-07-31-20:30:15 DEBUG Password is entered
+2025-07-31-20:30:16 DEBUG Sign In button clicked
+2025-07-31-20:30:16 DEBUG Login successful, landed on Home Page.
+2025-07-31-20:30:16 DEBUG Checking if user is on CRM Home Page
+2025-07-31-20:30:16 INFO  Login to Ninza CRM validated successfully.
+2025-07-31-20:30:16 DEBUG Opportunities link clicked
+2025-07-31-20:30:16 INFO  Create Opportunity button is clicked
+2025-07-31-20:30:17 INFO  Opportunity name is entered
+2025-07-31-20:30:17 INFO  Business type is entered
+2025-07-31-20:30:17 INFO  Amount is entered
+2025-07-31-20:30:17 INFO  Next step is entered
+2025-07-31-20:30:17 INFO  Sales stage is entered
+2025-07-31-20:30:18 INFO  Create Opportunity button is clicked
+2025-07-31-20:30:18 INFO  Error is: Please select a Lead before submitting.
+2025-07-31-20:30:18 INFO  Lead field validation tested successfully
+2025-07-31-20:30:18 DEBUG Parsing relationship: /xl/_rels/workbook.xml.rels
+2025-07-31-20:30:18 DEBUG Parsing relationship: /_rels/.rels
+2025-07-31-20:30:25 INFO  Navigated to CRM URL: http://49.249.28.218:8098/
+2025-07-31-20:30:25 DEBUG Navigated to the login page: http://49.249.28.218:8098/
+2025-07-31-20:30:25 DEBUG Username is entered
+2025-07-31-20:30:25 DEBUG Password is entered
+2025-07-31-20:30:25 DEBUG Sign In button clicked
+2025-07-31-20:30:25 DEBUG Login successful, landed on Home Page.
+2025-07-31-20:30:25 DEBUG Checking if user is on CRM Home Page
+2025-07-31-20:30:26 INFO  Login to Ninza CRM validated successfully.
+2025-07-31-20:30:26 DEBUG Opportunities link clicked
+2025-07-31-20:30:26 INFO  Create Opportunity button is clicked
+2025-07-31-20:30:26 INFO  Opportunity name is entered
+2025-07-31-20:30:26 INFO  Business type is entered
+2025-07-31-20:30:27 INFO  Amount is entered
+2025-07-31-20:30:27 INFO  Next step is left blank
+2025-07-31-20:30:27 INFO  Sales stage is entered
+2025-07-31-20:30:37 INFO  lead is selected
+2025-07-31-20:30:37 INFO  Create Opportunity button is clicked
+2025-07-31-20:30:37 INFO  Error is: Please fill out this field.
+2025-07-31-20:30:37 INFO  Next Step field validation tested successfully
+2025-07-31-20:30:37 DEBUG Parsing relationship: /xl/_rels/workbook.xml.rels
+2025-07-31-20:30:37 DEBUG Parsing relationship: /_rels/.rels
+2025-07-31-20:30:43 INFO  Navigated to CRM URL: http://49.249.28.218:8098/
+2025-07-31-20:30:43 DEBUG Navigated to the login page: http://49.249.28.218:8098/
+2025-07-31-20:30:43 DEBUG Username is entered
+2025-07-31-20:30:43 DEBUG Password is entered
+2025-07-31-20:30:43 DEBUG Sign In button clicked
+2025-07-31-20:30:44 DEBUG Login successful, landed on Home Page.
+2025-07-31-20:30:44 DEBUG Checking if user is on CRM Home Page
+2025-07-31-20:30:44 INFO  Login to Ninza CRM validated successfully.
+2025-07-31-20:30:44 DEBUG Opportunities link clicked
+2025-07-31-20:30:44 INFO  Create Opportunity button is clicked
+2025-07-31-20:30:44 INFO  Opportunity name is left blank
+2025-07-31-20:30:45 INFO  Business type is entered
+2025-07-31-20:30:45 INFO  Amount is entered
+2025-07-31-20:30:45 INFO  Next step is entered
+2025-07-31-20:30:45 INFO  Sales stage is entered
+2025-07-31-20:30:55 INFO  lead is selected
+2025-07-31-20:30:55 INFO  Create Opportunity button is clicked
+2025-07-31-20:30:55 INFO  Error is: Please fill out this field.
+2025-07-31-20:30:55 INFO  Opportunity Name field validation tested successfully
+2025-07-31-20:30:55 DEBUG Parsing relationship: /xl/_rels/workbook.xml.rels
+2025-07-31-20:30:55 DEBUG Parsing relationship: /_rels/.rels
+2025-07-31-20:31:01 INFO  Navigated to CRM URL: http://49.249.28.218:8098/
+2025-07-31-20:31:01 DEBUG Navigated to the login page: http://49.249.28.218:8098/
+2025-07-31-20:31:01 DEBUG Username is entered
+2025-07-31-20:31:02 DEBUG Password is entered
+2025-07-31-20:31:02 DEBUG Sign In button clicked
+2025-07-31-20:31:02 DEBUG Login successful, landed on Home Page.
+2025-07-31-20:31:02 DEBUG Checking if user is on CRM Home Page
+2025-07-31-20:31:02 INFO  Login to Ninza CRM validated successfully.
+2025-07-31-20:31:02 DEBUG Opportunities link clicked
+2025-07-31-20:31:02 INFO  Create Opportunity button is clicked
+2025-07-31-20:31:03 INFO  Opportunity name is entered
+2025-07-31-20:31:03 INFO  Business type is entered
+2025-07-31-20:31:03 INFO  Amount is entered
+2025-07-31-20:31:03 INFO  Next step is entered
+2025-07-31-20:31:04 INFO  Sales stage is left blank
+2025-07-31-20:31:13 INFO  lead is selected
+2025-07-31-20:31:13 INFO  Create Opportunity button is clicked
+2025-07-31-20:31:13 INFO  Error is: Please fill out this field.
+2025-07-31-20:31:13 INFO  Sales Stage field validation tested successfully
+2025-07-31-20:31:14 DEBUG Parsing relationship: /xl/_rels/workbook.xml.rels
+2025-07-31-20:31:14 DEBUG Parsing relationship: /_rels/.rels
+2025-07-31-20:31:20 INFO  Navigated to CRM URL: http://49.249.28.218:8098/
+2025-07-31-20:31:20 DEBUG Navigated to the login page: http://49.249.28.218:8098/
+2025-07-31-20:31:20 DEBUG Username is entered
+2025-07-31-20:31:21 DEBUG Password is entered
+2025-07-31-20:31:21 DEBUG Sign In button clicked
+2025-07-31-20:31:21 DEBUG Login successful, landed on Home Page.
+2025-07-31-20:31:21 DEBUG Checking if user is on CRM Home Page
+2025-07-31-20:31:21 INFO  Login to Ninza CRM validated successfully.
+2025-07-31-20:31:21 DEBUG Opportunities link clicked
+2025-07-31-20:31:21 INFO  Create Opportunity button is clicked
+2025-07-31-20:31:22 INFO  Opportunity name is entered
+2025-07-31-20:31:22 INFO  Business type is entered
+2025-07-31-20:31:22 INFO  Amount is entered
+2025-07-31-20:31:22 INFO  Next step is entered
+2025-07-31-20:31:23 INFO  Sales stage is entered
+2025-07-31-20:31:32 INFO  lead is selected
+2025-07-31-20:31:33 INFO  Alphabet 'e' is entered in Probability field
+2025-07-31-20:31:33 INFO  Create Opportunity button is clicked
+2025-07-31-20:31:33 INFO  Error is: Please enter a number.
+2025-07-31-20:31:33 INFO  Probablity field validation tested successfully
+2025-07-31-20:31:33 DEBUG Parsing relationship: /xl/_rels/workbook.xml.rels
+2025-07-31-20:31:33 DEBUG Parsing relationship: /_rels/.rels
+2025-07-31-20:31:40 INFO  Navigated to CRM URL: http://49.249.28.218:8098/
+2025-07-31-20:31:40 DEBUG Navigated to the login page: http://49.249.28.218:8098/
+2025-07-31-20:31:40 DEBUG Username is entered
+2025-07-31-20:31:40 DEBUG Password is entered
+2025-07-31-20:31:40 DEBUG Sign In button clicked
+2025-07-31-20:31:40 DEBUG Login successful, landed on Home Page.
+2025-07-31-20:31:40 DEBUG Checking if user is on CRM Home Page
+2025-07-31-20:31:40 INFO  Login to Ninza CRM validated successfully.
+2025-07-31-20:31:41 DEBUG Opportunities link clicked
+2025-07-31-20:31:41 INFO  Create Opportunity button is clicked
+2025-07-31-20:31:41 INFO  Opportunity name is entered
+2025-07-31-20:31:41 INFO  Amount is entered
+2025-07-31-20:31:41 INFO  Business type is entered
+2025-07-31-20:31:42 INFO  Next step is entered
+2025-07-31-20:31:42 INFO  Sales stage is entered
+2025-07-31-20:31:51 INFO  lead is selected
+2025-07-31-20:31:51 INFO  First opportunity created with name and lead.
+2025-07-31-20:32:02 INFO  First Opportunity ID: OPP00223
+2025-07-31-20:32:02 INFO  Create Opportunity button is clicked
+2025-07-31-20:32:02 INFO  Opportunity name is entered
+2025-07-31-20:32:02 INFO  Amount is entered
+2025-07-31-20:32:03 INFO  Business type is entered
+2025-07-31-20:32:03 INFO  Next step is entered
+2025-07-31-20:32:03 INFO  Sales stage is entered
+2025-07-31-20:32:12 INFO  lead is selected
+2025-07-31-20:32:13 INFO  Attempted to create duplicate opportunity.
+2025-07-31-20:32:23 INFO  Second Opportunity ID: OPP00224
+2025-07-31-20:32:24 DEBUG Parsing relationship: /xl/_rels/workbook.xml.rels
+2025-07-31-20:32:24 DEBUG Parsing relationship: /_rels/.rels
+2025-07-31-20:32:29 INFO  Navigated to CRM URL: http://49.249.28.218:8098/
+2025-07-31-20:32:29 DEBUG Navigated to the login page: http://49.249.28.218:8098/
+2025-07-31-20:32:30 DEBUG Username is entered
+2025-07-31-20:32:30 DEBUG Password is entered
+2025-07-31-20:32:30 DEBUG Sign In button clicked
+2025-07-31-20:32:30 DEBUG Login successful, landed on Home Page.
+2025-07-31-20:32:30 DEBUG Checking if user is on CRM Home Page
+2025-07-31-20:32:30 INFO  Login to Ninza CRM validated successfully.
+2025-07-31-20:32:30 DEBUG Opportunities link clicked
+2025-07-31-20:32:31 INFO  Create Opportunity button is clicked
+2025-07-31-20:32:31 INFO  Opportunity name is entered
+2025-07-31-20:32:31 INFO  Amount is entered
+2025-07-31-20:32:31 INFO  Business type is entered
+2025-07-31-20:32:31 INFO  invalid date is entered :02/10/2330
+2025-07-31-20:32:32 INFO  Next step is entered
+2025-07-31-20:32:32 INFO  Sales stage is entered
+2025-07-31-20:32:42 INFO  lead is selected
+2025-07-31-20:32:42 INFO  create opportunity button is clicked
+2025-07-31-20:32:42 INFO  Validation message for invalid date:Value must be 08/01/2027 or earlier.
+2025-07-31-20:32:42 INFO  valid date is entered :06/10/2027
+2025-07-31-20:32:42 INFO  create opportunity button is clicked
+2025-07-31-20:32:42 INFO  Valid date accepted successfully.
+2025-07-31-20:32:43 DEBUG Parsing relationship: /xl/_rels/workbook.xml.rels
+2025-07-31-20:32:43 DEBUG Parsing relationship: /_rels/.rels
+2025-07-31-20:32:49 INFO  Navigated to CRM URL: http://49.249.28.218:8098/
+2025-07-31-20:32:49 DEBUG Navigated to the login page: http://49.249.28.218:8098/
+2025-07-31-20:32:49 DEBUG Username is entered
+2025-07-31-20:32:49 DEBUG Password is entered
+2025-07-31-20:32:49 DEBUG Sign In button clicked
+2025-07-31-20:32:49 DEBUG Login successful, landed on Home Page.
+2025-07-31-20:32:49 DEBUG Checking if user is on CRM Home Page
+2025-07-31-20:32:50 INFO  Login to Ninza CRM validated successfully.
+2025-07-31-20:32:50 DEBUG Opportunities link clicked
+2025-07-31-20:32:50 INFO  Navigated to Create Opportunity page
+2025-07-31-20:32:50 INFO  Expected close date field is clicked
+2025-07-31-20:32:50 INFO  Date is set using sendkeys
+2025-07-31-20:32:50 INFO  Selected Date from UI:2026-05-10
+2025-07-31-20:32:50 INFO  Expected close date field is clicked
+2025-07-31-20:32:50 INFO  Opportunity name is entered
+2025-07-31-20:32:51 INFO  Amount is entered
+2025-07-31-20:32:51 INFO  Business type is entered
+2025-07-31-20:32:51 INFO  Next step is entered
+2025-07-31-20:32:51 INFO  Sales stage is entered
+2025-07-31-20:33:01 INFO  lead is selected
+2025-07-31-20:33:01 INFO  clicked create opportunity button
+2025-07-31-20:33:02 DEBUG Parsing relationship: /xl/_rels/workbook.xml.rels
+2025-07-31-20:33:02 DEBUG Parsing relationship: /_rels/.rels
+2025-07-31-20:33:08 INFO  Navigated to CRM URL: http://49.249.28.218:8098/
+2025-07-31-20:33:08 DEBUG Navigated to the login page: http://49.249.28.218:8098/
+2025-07-31-20:33:08 DEBUG Username is entered
+2025-07-31-20:33:09 DEBUG Password is entered
+2025-07-31-20:33:09 DEBUG Sign In button clicked
+2025-07-31-20:33:09 DEBUG Login successful, landed on Home Page.
+2025-07-31-20:33:09 DEBUG Checking if user is on CRM Home Page
+2025-07-31-20:33:09 INFO  Login to Ninza CRM validated successfully.
+2025-07-31-20:33:09 DEBUG Opportunities link clicked
+2025-07-31-20:33:20 INFO  message is :Please fill out this field.
+2025-07-31-20:33:20 DEBUG Parsing relationship: /xl/_rels/workbook.xml.rels
+2025-07-31-20:33:20 DEBUG Parsing relationship: /_rels/.rels
+2025-07-31-20:33:26 INFO  Navigated to CRM URL: http://49.249.28.218:8098/
+2025-07-31-20:33:26 DEBUG Navigated to the login page: http://49.249.28.218:8098/
+2025-07-31-20:33:26 DEBUG Username is entered
+2025-07-31-20:33:26 DEBUG Password is entered
+2025-07-31-20:33:27 DEBUG Sign In button clicked
+2025-07-31-20:33:27 DEBUG Login successful, landed on Home Page.
+2025-07-31-20:33:27 DEBUG Checking if user is on CRM Home Page
+2025-07-31-20:33:27 INFO  Login to Ninza CRM validated successfully.
+2025-07-31-20:33:27 DEBUG Opportunities link clicked
+2025-07-31-20:33:27 INFO  Opportunity name is entered
+2025-07-31-20:33:28 INFO  Amount is entered
+2025-07-31-20:33:28 INFO  Business type is entered
+2025-07-31-20:33:28 INFO  Next step is entered
+2025-07-31-20:33:28 INFO  Sales stage is entered
+2025-07-31-20:33:38 INFO  lead is selected
+2025-07-31-20:33:38 INFO  clicked create opportunity button
+2025-07-31-20:33:38 DEBUG Parsing relationship: /xl/_rels/workbook.xml.rels
+2025-07-31-20:33:38 DEBUG Parsing relationship: /_rels/.rels
+2025-07-31-20:33:44 INFO  Navigated to CRM URL: http://49.249.28.218:8098/
+2025-07-31-20:33:44 DEBUG Navigated to the login page: http://49.249.28.218:8098/
+2025-07-31-20:33:44 DEBUG Username is entered
+2025-07-31-20:33:44 DEBUG Password is entered
+2025-07-31-20:33:45 DEBUG Sign In button clicked
+2025-07-31-20:33:45 DEBUG Login successful, landed on Home Page.
+2025-07-31-20:33:45 DEBUG Checking if user is on CRM Home Page
+2025-07-31-20:33:45 INFO  Login to Ninza CRM validated successfully.
+2025-07-31-20:33:45 DEBUG Opportunities link clicked
+2025-07-31-20:33:45 INFO  Create Opportunity button is clicked
+2025-07-31-20:33:45 INFO  Opportunity name is entered
+2025-07-31-20:33:46 INFO  Business type is entered
+2025-07-31-20:33:46 INFO  Amount is entered
+2025-07-31-20:33:46 INFO  Next step is entered
+2025-07-31-20:33:46 INFO  Sales stage is entered
+2025-07-31-20:33:56 INFO  lead is selected
+2025-07-31-20:33:56 INFO  Probability-10is entered
+2025-07-31-20:33:56 INFO  Create Opportunity button is clicked
+2025-07-31-20:33:56 INFO  Validation for -10:Value must be greater than or equal to 0.
+2025-07-31-20:33:56 INFO  Opportunity name is entered
+2025-07-31-20:33:57 INFO  Business type is entered
+2025-07-31-20:33:57 INFO  Amount is entered
+2025-07-31-20:33:57 INFO  Next step is entered
+2025-07-31-20:33:57 INFO  Sales stage is entered
+2025-07-31-20:34:07 INFO  lead is selected
+2025-07-31-20:34:07 INFO  Probability150is entered
+2025-07-31-20:34:07 INFO  Create Opportunity button is clicked
+2025-07-31-20:34:07 INFO  Validation for 150:Value must be less than or equal to 100.
+2025-07-31-20:34:08 INFO  Opportunity name is entered
+2025-07-31-20:34:08 INFO  Business type is entered
+2025-07-31-20:34:08 INFO  Amount is entered
+2025-07-31-20:34:08 INFO  Next step is entered
+2025-07-31-20:34:09 INFO  Sales stage is entered
+2025-07-31-20:34:18 INFO  lead is selected
+2025-07-31-20:34:19 INFO  Probability50is entered
+2025-07-31-20:34:19 INFO  Create Opportunity button is clicked
+2025-07-31-20:34:30 DEBUG Parsing relationship: /xl/_rels/workbook.xml.rels
+2025-07-31-20:34:30 DEBUG Parsing relationship: /_rels/.rels
+2025-07-31-20:34:36 INFO  Navigated to CRM URL: http://49.249.28.218:8098/
+2025-07-31-20:34:36 DEBUG Navigated to the login page: http://49.249.28.218:8098/
+2025-07-31-20:34:36 DEBUG Username is entered
+2025-07-31-20:34:36 DEBUG Password is entered
+2025-07-31-20:34:36 DEBUG Sign In button clicked
+2025-07-31-20:34:37 DEBUG Login successful, landed on Home Page.
+2025-07-31-20:34:37 DEBUG Checking if user is on CRM Home Page
+2025-07-31-20:34:37 INFO  Login to Ninza CRM validated successfully.
+2025-07-31-20:34:37 DEBUG Opportunities link clicked
+2025-07-31-20:34:37 INFO  Navigated to Create Opportunity
+2025-07-31-20:34:37 INFO  Opportunity name is entered
+2025-07-31-20:34:37 INFO  Amount is entered
+2025-07-31-20:34:37 INFO  Business type is entered
+2025-07-31-20:34:38 INFO  Next step is entered
+2025-07-31-20:34:38 INFO  Sales stage is entered
+2025-07-31-20:34:47 INFO  lead is selected
+2025-07-31-20:34:47 INFO  clicked create opportunity button
+2025-07-31-20:34:49 DEBUG Parsing relationship: /xl/_rels/workbook.xml.rels
+2025-07-31-20:34:49 DEBUG Parsing relationship: /_rels/.rels
+2025-07-31-20:34:55 INFO  Navigated to CRM URL: http://49.249.28.218:8098/
+2025-07-31-20:34:55 DEBUG Navigated to the login page: http://49.249.28.218:8098/
+2025-07-31-20:34:55 DEBUG Username is entered
+2025-07-31-20:34:55 DEBUG Password is entered
+2025-07-31-20:34:55 DEBUG Sign In button clicked
+2025-07-31-20:34:56 DEBUG Login successful, landed on Home Page.
+2025-07-31-20:34:56 DEBUG Checking if user is on CRM Home Page
+2025-07-31-20:34:56 INFO  Login to Ninza CRM validated successfully.
+2025-07-31-20:34:56 DEBUG Opportunities link clicked
+2025-07-31-20:34:56 INFO  Navigated to Create Opportunity form
+2025-07-31-20:34:56 INFO  Create opportunity button is clicked
+2025-07-31-20:34:56 INFO  Opportunity name is entered
+2025-07-31-20:34:56 INFO  Create opportunity button is clicked
+2025-07-31-20:34:57 INFO  Amount is entered
+2025-07-31-20:34:57 INFO  Create opportunity button is clicked
+2025-07-31-20:34:57 INFO  Business type is entered
+2025-07-31-20:34:57 INFO  Create opportunity button is clicked
+2025-07-31-20:34:58 INFO  Next step is entered
+2025-07-31-20:34:58 INFO  Create opportunity button is clicked
+2025-07-31-20:34:58 INFO  Sales stage is entered
+2025-07-31-20:34:58 INFO  Create opportunity button is clicked
+2025-07-31-20:35:08 INFO  Validation Message - Opportunity Name: Please fill out this field.
+2025-07-31-20:35:08 INFO  Validation Message - Amount: Please fill out this field.
+2025-07-31-20:35:08 INFO  Validation Message - Business Type: Please fill out this field.
+2025-07-31-20:35:08 INFO  Validation Message - Next Step: Please fill out this field.
+2025-07-31-20:35:08 INFO  Validation Message - Sales Stage: Please fill out this field.
+2025-07-31-20:35:08 INFO  Validation Message - Lead: Please select a Lead before submitting.
+2025-07-31-20:35:09 DEBUG Parsing relationship: /xl/_rels/workbook.xml.rels
+2025-07-31-20:35:09 DEBUG Parsing relationship: /_rels/.rels
+2025-07-31-20:35:18 INFO  Navigated to CRM URL: http://49.249.28.218:8098/
+2025-07-31-20:35:18 DEBUG Navigated to the login page: http://49.249.28.218:8098/
+2025-07-31-20:35:18 DEBUG Username is entered
+2025-07-31-20:35:18 DEBUG Password is entered
+2025-07-31-20:35:18 DEBUG Sign In button clicked
+2025-07-31-20:35:19 DEBUG Login successful, landed on Home Page.
+2025-07-31-20:35:19 DEBUG Checking if user is on CRM Home Page
+2025-07-31-20:35:19 INFO  Login to Ninza CRM validated successfully.
+2025-07-31-20:35:19 DEBUG Opportunities link clicked
+2025-07-31-20:35:19 INFO  Create Opportunity button is clicked
+2025-07-31-20:35:19 INFO  Opportunity name is entered
+2025-07-31-20:35:19 INFO  Amount is entered
+2025-07-31-20:35:20 INFO  Business type is entered
+2025-07-31-20:35:20 INFO  Next step is entered
+2025-07-31-20:35:20 INFO  Sales stage is entered
+2025-07-31-20:35:30 INFO  lead is selected
+2025-07-31-20:35:30 INFO  opportunity is created with mandatory fields: AutoOppabc,Regina
+2025-07-31-20:35:30 INFO  opportunity found succesfully: AutoOppabc
+2025-07-31-20:35:36 INFO  Navigated to CRM URL: http://49.249.28.218:8098/
+2025-07-31-20:35:36 DEBUG Navigated to the login page: http://49.249.28.218:8098/
+2025-07-31-20:35:36 DEBUG Username is entered
+2025-07-31-20:35:36 DEBUG Password is entered
+2025-07-31-20:35:36 DEBUG Sign In button clicked
+2025-07-31-20:35:37 DEBUG Login successful, landed on Home Page.
+2025-07-31-20:35:37 DEBUG Checking if user is on CRM Home Page
+2025-07-31-20:35:37 INFO  Login to Ninza CRM validated successfully.
+2025-07-31-20:35:37 DEBUG Opportunities link clicked
+2025-07-31-20:35:37 INFO  Create Opportunity button is clicked
+2025-07-31-20:35:37 INFO  Opportunity name is entered
+2025-07-31-20:35:37 INFO  Amount is entered
+2025-07-31-20:35:37 INFO  Business type is entered
+2025-07-31-20:35:38 INFO  Next step is entered
+2025-07-31-20:35:38 INFO  Sales stage is entered
+2025-07-31-20:35:47 INFO  lead is selected
+2025-07-31-20:35:48 INFO  opportunity is created with mandatory fields: AutoOppxyz,LeadMandatory
+2025-07-31-20:35:48 INFO  opportunity found succesfully: AutoOppxyz
+2025-07-31-20:35:54 INFO  Navigated to CRM URL: http://49.249.28.218:8098/
+2025-07-31-20:35:54 DEBUG Navigated to the login page: http://49.249.28.218:8098/
+2025-07-31-20:35:54 DEBUG Username is entered
+2025-07-31-20:35:54 DEBUG Password is entered
+2025-07-31-20:35:54 DEBUG Sign In button clicked
+2025-07-31-20:35:55 DEBUG Login successful, landed on Home Page.
+2025-07-31-20:35:55 DEBUG Checking if user is on CRM Home Page
+2025-07-31-20:35:55 INFO  Login to Ninza CRM validated successfully.
+2025-07-31-20:35:55 DEBUG Opportunities link clicked
+2025-07-31-20:35:55 INFO  Create Opportunity button is clicked
+2025-07-31-20:35:55 INFO  Opportunity name is entered
+2025-07-31-20:35:56 INFO  Amount is entered
+2025-07-31-20:35:56 INFO  Business type is entered
+2025-07-31-20:35:56 INFO  Next step is entered
+2025-07-31-20:35:56 INFO  Sales stage is entered
+2025-07-31-20:36:06 INFO  lead is selected
+2025-07-31-20:36:06 INFO  opportunity is created with mandatory fields: AutoOppProbBlank,Regina
+2025-07-31-20:36:06 INFO  opportunity found succesfully: AutoOppProbBlank
+2025-07-31-20:36:12 INFO  Navigated to CRM URL: http://49.249.28.218:8098/
+2025-07-31-20:36:12 DEBUG Navigated to the login page: http://49.249.28.218:8098/
+2025-07-31-20:36:13 DEBUG Username is entered
+2025-07-31-20:36:13 DEBUG Password is entered
+2025-07-31-20:36:13 DEBUG Sign In button clicked
+2025-07-31-20:36:13 DEBUG Login successful, landed on Home Page.
+2025-07-31-20:36:13 DEBUG Checking if user is on CRM Home Page
+2025-07-31-20:36:13 INFO  Login to Ninza CRM validated successfully.
+2025-07-31-20:36:14 DEBUG Opportunities link clicked
+2025-07-31-20:36:14 INFO  Create Opportunity button is clicked
+2025-07-31-20:36:14 INFO  Opportunity name is entered
+2025-07-31-20:36:14 INFO  Amount is entered
+2025-07-31-20:36:14 INFO  Business type is entered
+2025-07-31-20:36:14 INFO  Next step is entered
+2025-07-31-20:36:15 INFO  Sales stage is entered
+2025-07-31-20:36:24 INFO  lead is selected
+2025-07-31-20:36:24 INFO  opportunity is created with mandatory fields: ,LeadMandatory
+2025-07-31-20:36:24 INFO  opportunity found succesfully: 
+2025-07-31-20:36:31 INFO  Navigated to CRM URL: http://49.249.28.218:8098/
+2025-07-31-20:36:31 DEBUG Navigated to the login page: http://49.249.28.218:8098/
+2025-07-31-20:36:31 DEBUG Username is entered
+2025-07-31-20:36:31 DEBUG Password is entered
+2025-07-31-20:36:31 DEBUG Sign In button clicked
+2025-07-31-20:36:32 DEBUG Login successful, landed on Home Page.
+2025-07-31-20:36:32 DEBUG Checking if user is on CRM Home Page
+2025-07-31-20:36:32 INFO  Login to Ninza CRM validated successfully.
+2025-07-31-20:36:32 DEBUG Opportunities link clicked
+2025-07-31-20:36:32 INFO  Create Opportunity button is clicked
+2025-07-31-20:36:32 INFO  Opportunity name is entered
+2025-07-31-20:36:32 INFO  Amount is entered
+2025-07-31-20:36:32 INFO  Business type is entered
+2025-07-31-20:36:33 INFO  Next step is entered
+2025-07-31-20:36:33 INFO  Sales stage is entered
+2025-07-31-20:36:42 INFO  lead is selected
+2025-07-31-20:36:43 INFO  opportunity is created with mandatory fields: AutoOppmnt,LeadMandatory
+2025-07-31-20:36:43 INFO  opportunity found succesfully: AutoOppmnt
+2025-07-31-20:36:49 INFO  Navigated to CRM URL: http://49.249.28.218:8098/
+2025-07-31-20:36:49 DEBUG Navigated to the login page: http://49.249.28.218:8098/
+2025-07-31-20:36:50 DEBUG Username is entered
+2025-07-31-20:36:50 DEBUG Password is entered
+2025-07-31-20:36:50 DEBUG Sign In button clicked
+2025-07-31-20:36:50 DEBUG Login successful, landed on Home Page.
+2025-07-31-20:36:50 DEBUG Checking if user is on CRM Home Page
+2025-07-31-20:36:50 INFO  Login to Ninza CRM validated successfully.
+2025-07-31-20:36:50 DEBUG Opportunities link clicked
+2025-07-31-20:36:51 INFO  Create Opportunity button is clicked
+2025-07-31-20:36:51 INFO  Opportunity name is entered
+2025-07-31-20:36:51 INFO  Amount is entered
+2025-07-31-20:36:51 INFO  Business type is entered
+2025-07-31-20:36:51 INFO  Next step is entered
+2025-07-31-20:36:52 INFO  Sales stage is entered
+2025-07-31-20:37:01 INFO  lead is selected
+2025-07-31-20:37:01 INFO  opportunity is created with mandatory fields: AutoOpptemp,LeadMandatory
+2025-07-31-20:37:01 INFO  opportunity found succesfully: AutoOpptemp
+2025-07-31-20:37:07 INFO  Navigated to CRM URL: http://49.249.28.218:8098/
+2025-07-31-20:37:07 DEBUG Navigated to the login page: http://49.249.28.218:8098/
+2025-07-31-20:37:08 DEBUG Username is entered
+2025-07-31-20:37:08 DEBUG Password is entered
+2025-07-31-20:37:08 DEBUG Sign In button clicked
+2025-07-31-20:37:08 DEBUG Login successful, landed on Home Page.
+2025-07-31-20:37:08 DEBUG Checking if user is on CRM Home Page
+2025-07-31-20:37:08 INFO  Login to Ninza CRM validated successfully.
+2025-07-31-20:37:08 DEBUG Opportunities link clicked
+2025-07-31-20:37:09 INFO  Create Opportunity button is clicked
+2025-07-31-20:37:09 INFO  Opportunity name is entered
+2025-07-31-20:37:09 INFO  Amount is entered
+2025-07-31-20:37:09 INFO  Business type is entered
+2025-07-31-20:37:09 INFO  Next step is entered
+2025-07-31-20:37:09 INFO  Sales stage is entered
+2025-07-31-20:37:19 INFO  lead is selected
+2025-07-31-20:37:19 INFO  opportunity is created with mandatory fields: AutoOpptemper,Regina
+2025-07-31-20:37:19 INFO  opportunity found succesfully: AutoOpptemper
+2025-07-31-20:37:26 INFO  Navigated to CRM URL: http://49.249.28.218:8098/
+2025-07-31-20:37:26 DEBUG Navigated to the login page: http://49.249.28.218:8098/
+2025-07-31-20:37:26 DEBUG Username is entered
+2025-07-31-20:37:26 DEBUG Password is entered
+2025-07-31-20:37:26 DEBUG Sign In button clicked
+2025-07-31-20:37:26 DEBUG Login successful, landed on Home Page.
+2025-07-31-20:37:26 DEBUG Checking if user is on CRM Home Page
+2025-07-31-20:37:26 INFO  Login to Ninza CRM validated successfully.
+2025-07-31-20:37:27 DEBUG Opportunities link clicked
+2025-07-31-20:37:27 INFO  Create Opportunity button is clicked
+2025-07-31-20:37:27 INFO  Opportunity name is entered
+2025-07-31-20:37:27 INFO  Amount is entered
+2025-07-31-20:37:28 INFO  Business type is entered
+2025-07-31-20:37:28 INFO  Next step is entered
+2025-07-31-20:37:28 INFO  Sales stage is entered
+2025-07-31-20:37:37 INFO  lead is selected
+2025-07-31-20:37:38 INFO  opportunity is created with mandatory fields: AutoOppfifa,Regina
+2025-07-31-20:37:38 INFO  opportunity found succesfully: AutoOppfifa
+2025-07-31-20:37:44 INFO  Navigated to CRM URL: http://49.249.28.218:8098/
+2025-07-31-20:37:44 DEBUG Navigated to the login page: http://49.249.28.218:8098/
+2025-07-31-20:37:44 DEBUG Username is entered
+2025-07-31-20:37:44 DEBUG Password is entered
+2025-07-31-20:37:44 DEBUG Sign In button clicked
+2025-07-31-20:37:45 DEBUG Login successful, landed on Home Page.
+2025-07-31-20:37:45 DEBUG Checking if user is on CRM Home Page
+2025-07-31-20:37:45 INFO  Login to Ninza CRM validated successfully.
+2025-07-31-20:37:45 DEBUG Opportunities link clicked
+2025-07-31-20:37:45 INFO  Create Opportunity button is clicked
+2025-07-31-20:37:45 INFO  Opportunity name is entered
+2025-07-31-20:37:46 INFO  Amount is entered
+2025-07-31-20:37:46 INFO  Business type is entered
+2025-07-31-20:37:46 INFO  Next step is entered
+2025-07-31-20:37:46 INFO  Sales stage is entered
+2025-07-31-20:37:56 INFO  lead is selected
+2025-07-31-20:37:56 INFO  opportunity is created with mandatory fields: AutoOppTst,
+2025-07-31-20:37:56 INFO  opportunity found succesfully: AutoOppTst
+2025-07-31-20:38:02 INFO  Navigated to CRM URL: http://49.249.28.218:8098/
+2025-07-31-20:38:02 DEBUG Navigated to the login page: http://49.249.28.218:8098/
+2025-07-31-20:38:03 DEBUG Username is entered
+2025-07-31-20:38:03 DEBUG Password is entered
+2025-07-31-20:38:03 DEBUG Sign In button clicked
+2025-07-31-20:38:03 DEBUG Login successful, landed on Home Page.
+2025-07-31-20:38:03 DEBUG Checking if user is on CRM Home Page
+2025-07-31-20:38:03 INFO  Login to Ninza CRM validated successfully.
+2025-07-31-20:38:03 DEBUG Opportunities link clicked
+2025-07-31-20:38:04 INFO  Create Opportunity button is clicked
+2025-07-31-20:38:04 INFO  Opportunity name is entered
+2025-07-31-20:38:04 INFO  Amount is entered
+2025-07-31-20:38:04 INFO  Business type is entered
+2025-07-31-20:38:04 INFO  Next step is entered
+2025-07-31-20:38:05 INFO  Sales stage is entered
+2025-07-31-20:38:14 INFO  lead is selected
+2025-07-31-20:38:14 INFO  opportunity is created with mandatory fields: TestA,Regina
+2025-07-31-20:38:14 INFO  opportunity found succesfully: TestA
+2025-07-31-20:38:14 DEBUG Parsing relationship: /xl/_rels/workbook.xml.rels
+2025-07-31-20:38:14 DEBUG Parsing relationship: /_rels/.rels
+2025-07-31-20:38:20 INFO  Navigated to CRM URL: http://49.249.28.218:8098/
+2025-07-31-20:38:20 DEBUG Navigated to the login page: http://49.249.28.218:8098/
+2025-07-31-20:38:21 DEBUG Username is entered
+2025-07-31-20:38:21 DEBUG Password is entered
+2025-07-31-20:38:21 DEBUG Sign In button clicked
+2025-07-31-20:38:21 DEBUG Login successful, landed on Home Page.
+2025-07-31-20:38:21 DEBUG Checking if user is on CRM Home Page
+2025-07-31-20:38:21 INFO  Login to Ninza CRM validated successfully.
+2025-07-31-20:38:21 DEBUG Opportunities link clicked
+2025-07-31-20:38:22 INFO  Create Opportunity button is clicked
+2025-07-31-20:38:22 INFO  Opportunity name is entered
+2025-07-31-20:38:22 INFO  Amount is entered
+2025-07-31-20:38:22 INFO  Business type is entered
+2025-07-31-20:38:23 INFO  expected close date is entered
+2025-07-31-20:38:23 INFO  Assigned to is entered
+2025-07-31-20:38:23 INFO  Probability is entered
+2025-07-31-20:38:24 INFO  Next step is entered
+2025-07-31-20:38:24 INFO  Sales stage is entered
+2025-07-31-20:38:33 INFO  lead is selected
+2025-07-31-20:38:34 INFO  description is entered
+2025-07-31-20:38:34 INFO  opportunity is created
+2025-07-31-20:38:34 INFO  Opportunity found succesfully: AutoOppxyz
+2025-07-31-20:38:34 DEBUG Parsing relationship: /xl/_rels/workbook.xml.rels
+2025-07-31-20:38:34 DEBUG Parsing relationship: /_rels/.rels
+2025-07-31-20:38:42 INFO  Navigated to CRM URL: http://49.249.28.218:8098/
+2025-07-31-20:38:42 DEBUG Navigated to the login page: http://49.249.28.218:8098/
+2025-07-31-20:38:42 DEBUG Username is entered
+2025-07-31-20:38:42 DEBUG Password is entered
+2025-07-31-20:38:42 DEBUG Sign In button clicked
+2025-07-31-20:38:43 DEBUG Login successful, landed on Home Page.
+2025-07-31-20:38:43 DEBUG Checking if user is on CRM Home Page
+2025-07-31-20:38:43 INFO  Login to Ninza CRM validated successfully.
+2025-07-31-20:38:43 DEBUG Opportunities link clicked
+2025-07-31-20:38:43 INFO  Create Opportunity button is clicked
+2025-07-31-20:38:43 INFO  Opportunity name is entered
+2025-07-31-20:38:44 INFO  Amount is entered
+2025-07-31-20:38:44 INFO  Business type is entered
+2025-07-31-20:38:44 INFO  Next step is entered
+2025-07-31-20:38:44 INFO  Sales stage is entered
+2025-07-31-20:38:54 INFO  lead is selected
+2025-07-31-20:38:54 INFO  opportunity is created
+2025-07-31-20:38:54 INFO  Success message is appeared
+2025-07-31-20:38:55 INFO  Opportunity ID 1: OPP00235
+2025-07-31-20:38:55 DEBUG Opportunities link clicked
+2025-07-31-20:39:06 INFO  Opportunity name is entered
+2025-07-31-20:39:06 INFO  Amount is entered
+2025-07-31-20:39:06 INFO  Business type is entered
+2025-07-31-20:39:06 INFO  Next step is entered
+2025-07-31-20:39:06 INFO  Sales stage is entered
+2025-07-31-20:39:16 INFO  lead is selected
+2025-07-31-20:39:16 INFO  opportunity is created
+2025-07-31-20:39:16 INFO  Success message is appeared
+2025-07-31-20:39:17 INFO  Opportunity ID 2: OPP00236
+2025-07-31-20:39:17 DEBUG Opportunities link clicked
+2025-07-31-20:39:28 DEBUG Parsing relationship: /xl/_rels/workbook.xml.rels
+2025-07-31-20:39:28 DEBUG Parsing relationship: /_rels/.rels
+2025-07-31-20:39:33 INFO  Navigated to CRM URL: http://49.249.28.218:8098/
+2025-07-31-20:39:33 DEBUG Navigated to the login page: http://49.249.28.218:8098/
+2025-07-31-20:39:34 DEBUG Username is entered
+2025-07-31-20:39:34 DEBUG Password is entered
+2025-07-31-20:39:34 DEBUG Sign In button clicked
+2025-07-31-20:39:34 DEBUG Login successful, landed on Home Page.
+2025-07-31-20:39:34 DEBUG Checking if user is on CRM Home Page
+2025-07-31-20:39:34 INFO  Login to Ninza CRM validated successfully.
+2025-07-31-20:39:34 DEBUG Opportunities link clicked
+2025-07-31-20:39:35 INFO  Create Opportunity button is clicked
+2025-07-31-20:39:35 INFO  Opportunity name is entered
+2025-07-31-20:39:35 INFO  Amount is entered
+2025-07-31-20:39:35 INFO  Business type is entered
+2025-07-31-20:39:36 INFO  Next step is entered
+2025-07-31-20:39:36 INFO  Sales stage is entered
+2025-07-31-20:39:45 INFO  lead is selected
+2025-07-31-20:39:45 INFO  opportunity is created with blank Probability
+2025-07-31-20:39:46 INFO  Probability field value: 0
+2025-07-31-20:39:46 DEBUG Parsing relationship: /xl/_rels/workbook.xml.rels
+2025-07-31-20:39:46 DEBUG Parsing relationship: /_rels/.rels
+2025-07-31-20:39:52 INFO  Navigated to CRM URL: http://49.249.28.218:8098/
+2025-07-31-20:39:52 DEBUG Navigated to the login page: http://49.249.28.218:8098/
+2025-07-31-20:39:53 DEBUG Username is entered
+2025-07-31-20:39:53 DEBUG Password is entered
+2025-07-31-20:39:53 DEBUG Sign In button clicked
+2025-07-31-20:39:53 DEBUG Login successful, landed on Home Page.
+2025-07-31-20:39:53 DEBUG Checking if user is on CRM Home Page
+2025-07-31-20:39:53 INFO  Login to Ninza CRM validated successfully.
+2025-07-31-20:39:54 DEBUG Opportunities link clicked
+2025-07-31-20:39:54 INFO  Create Opportunity button is clicked
+2025-07-31-20:39:54 INFO  Opportunity name is entered
+2025-07-31-20:39:54 INFO  Business type is entered
+2025-07-31-20:39:54 INFO  Next step is entered
+2025-07-31-20:39:55 INFO  Sales stage is entered
+2025-07-31-20:40:04 INFO  lead is selected
+2025-07-31-20:40:04 INFO  Amount field is left blank
+2025-07-31-20:40:04 INFO  Create Opportunity button is clicked
+2025-07-31-20:40:04 INFO  Error is: Please fill out this field.
+2025-07-31-20:40:05 INFO  Alphabet 'e' is entered in Amount field
+2025-07-31-20:40:05 INFO  Create Opportunity button is clicked
+2025-07-31-20:40:05 INFO  Error is: Please enter a number.
+2025-07-31-20:40:05 INFO  Amount field validation tested successfully

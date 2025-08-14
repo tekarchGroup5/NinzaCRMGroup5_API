@@ -1,0 +1,19 @@
+{
+  "name": "MadhuSmitha",
+  "company": "Handmade Art",
+  "email": "madhu@example.com",
+  "phone": "1234567890",
+  "city": "Austin",
+  "country": "USA",
+  "description": "Handmade Art Lead",
+  "industry": "Art & Crafts",
+  "noOfEmployees": 5,
+  "website": "https://handmadeart.com",
+  "rating": "Hot",
+  "leadSource": "Website",
+  "leadStatus": "New",
+  "address": "123 Main St",
+  "postalCode": 78701,
+  "annualRevenue": 100000,
+  "assignedTo": "SalesTeam1"
+}
