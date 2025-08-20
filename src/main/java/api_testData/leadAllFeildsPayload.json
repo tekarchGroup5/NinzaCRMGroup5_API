@@ -1,0 +1,20 @@
+{
+  "address": "123 Main Street",
+  "annualRevenue": 1500000,
+  "assignedTo": "CRmUSer1",
+  "city": "Frisco",
+  "company": "Group5 Solutions",
+  "country": "USA",
+  "description": "Lead interested in enterprise software solutions.",
+  "email": "TestLead@example.com",
+  "industry": "Information Technology",
+  "leadSource": "Website Signup",
+  "leadStatus": "Qualified",
+  "name": "Madhu_TestLead5",
+  "noOfEmployees": 250,
+  "phone": "+1-214-555-7890",
+  "postalCode": 75034,
+  "rating": "2",
+  "secondaryEmail": "Madhu_TesLead5@example.com",
+  "website": "https://www.group5Solutions.com"
+}

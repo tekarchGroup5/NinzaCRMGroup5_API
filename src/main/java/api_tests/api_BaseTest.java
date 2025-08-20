@@ -53,7 +53,7 @@ public class api_BaseTest {
         RestAssured.config = RestAssured.config()
             .objectMapperConfig(new ObjectMapperConfig(ObjectMapperType.JACKSON_2));
 
-        RequestSpecification requestSpecification = new RequestSpecBuilder()
+        RequestSpecification requestSpecification = new RequestSpecBuilder()//All Request will be using these settings
             .setBaseUri(baseUri)
             .setAuth(RestAssured.preemptive().basic(username, password))
             .addHeader("Content-Type", "application/json")
@@ -73,7 +73,7 @@ public class api_BaseTest {
     @AfterSuite
     public void tearDownReport() {
         if (extent != null) {
-            extent.flush();
+            extent.flush();//writes everything to the report  
         }
     }
 }
