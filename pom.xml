@@ -35,6 +35,12 @@
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
         </dependency>
+        <dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <version>1.18.32</version> <!-- use latest -->
+    <scope>provided</scope>
+</dependency>
 
         <!-- RestAssured -->
         <dependency>
