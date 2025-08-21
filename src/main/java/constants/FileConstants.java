@@ -25,6 +25,6 @@ public class FileConstants {
 	public static final String LOGIN_SCHEMA_FILE_PATH = ROOT_PATH
 			+ "/src/main/java/schemaValidations/loginResponseSchema.json";
 	public static final String OPP_API_TESTDATA_FILE_PATH = ROOT_PATH
-			+ "src/main/java/api_testData/OpportunityTestData.json";
+			+ "/src/main/java/api_testData/OpportunityTestData.json";
 
 }
