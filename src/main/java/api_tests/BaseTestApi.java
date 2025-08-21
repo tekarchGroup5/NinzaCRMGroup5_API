@@ -22,7 +22,7 @@ import io.restassured.specification.ResponseSpecification;
 import utils.ReportManager;
 
 
-public class api_BaseTest {
+public class BaseTestApi {
 
     protected Properties prop;
     protected ExtentReports extent;

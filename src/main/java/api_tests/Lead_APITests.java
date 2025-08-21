@@ -13,7 +13,7 @@ import io.restassured.http.ContentType;
 import io.restassured.mapper.ObjectMapperType;
 import api_POJOS.CreateLead_POJO;
 
-public class Lead_APITests extends api_BaseTest {
+public class Lead_APITests extends BaseTestApi {
 
     @Test
     public void createLeadFromJson() throws IOException {
