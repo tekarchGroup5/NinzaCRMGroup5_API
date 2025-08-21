@@ -7,7 +7,7 @@ import org.testng.ITestResult;
 
 import com.aventstack.extentreports.Status;
 
-import api_tests.api_BaseTest;
+import api_tests.BaseTestApi;
 import tests.BaseTest;
 import utils.CommonUtils;
 

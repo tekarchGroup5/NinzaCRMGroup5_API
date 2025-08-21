@@ -1,0 +1,169 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Generated schema for Root",
+    "type": "object",
+    "properties": {
+        "amount": {
+            "type": "string"
+        },
+        "assignedTo": {
+            "type": "string"
+        },
+        "businessType": {
+            "type": "string"
+        },
+        "description": {
+            "type": "string"
+        },
+        "expectedCloseDate": {
+            "type": "string"
+        },
+        "lead": {
+            "type": "object",
+            "properties": {
+                "address": {
+                    "type": "string"
+                },
+                "annualRevenue": {
+                    "type": "number"
+                },
+                "assignedTo": {
+                    "type": "string"
+                },
+                "campaign": {
+                    "type": "object",
+                    "properties": {
+                        "campaignId": {
+                            "type": "string"
+                        },
+                        "campaignName": {
+                            "type": "string"
+                        },
+                        "campaignStatus": {
+                            "type": "string"
+                        },
+                        "description": {
+                            "type": "string"
+                        },
+                        "expectedCloseDate": {
+                            "type": "string"
+                        },
+                        "targetAudience": {
+                            "type": "string"
+                        },
+                        "targetSize": {
+                            "type": "number"
+                        }
+                    },
+                    "required": [
+                        "campaignId",
+                        "campaignName",
+                        "campaignStatus",
+                        "description",
+                        "expectedCloseDate",
+                        "targetAudience",
+                        "targetSize"
+                    ]
+                },
+                "city": {
+                    "type": "string"
+                },
+                "company": {
+                    "type": "string"
+                },
+                "country": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "industry": {
+                    "type": "string"
+                },
+                "leadId": {
+                    "type": "string"
+                },
+                "leadSource": {
+                    "type": "string"
+                },
+                "leadStatus": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "noOfEmployees": {
+                    "type": "number"
+                },
+                "phone": {
+                    "type": "string"
+                },
+                "postalCode": {
+                    "type": "number"
+                },
+                "rating": {
+                    "type": "string"
+                },
+                "secondaryEmail": {
+                    "type": "string"
+                },
+                "website": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "address",
+                "annualRevenue",
+                "assignedTo",
+                "campaign",
+                "city",
+                "company",
+                "country",
+                "description",
+                "email",
+                "industry",
+                "leadId",
+                "leadSource",
+                "leadStatus",
+                "name",
+                "noOfEmployees",
+                "phone",
+                "postalCode",
+                "rating",
+                "secondaryEmail",
+                "website"
+            ]
+        },
+        "nextStep": {
+            "type": "string"
+        },
+        "opportunityId": {
+            "type": "string"
+        },
+        "opportunityName": {
+            "type": "string"
+        },
+        "probability": {
+            "type": "string"
+        },
+        "salesStage": {
+            "type": "string"
+        }
+    },
+    "required": [
+        "amount",
+        "assignedTo",
+        "businessType",
+        "description",
+        "expectedCloseDate",
+        "lead",
+        "nextStep",
+        "opportunityId",
+        "opportunityName",
+        "probability",
+        "salesStage"
+    ]
+}
