@@ -4,11 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jayway.jsonpath.JsonPath;
-
 import api_POJOS.OpportunitiesPojo;
 import constants.FileConstants;
 
@@ -27,8 +25,6 @@ public class DataUtils {
 		String testData = DataUtils.readJsonFileToString(FileConstants.TEST_DATA_FILE_PATH);
 		return JsonPath.read(testData, jsonPath);
 	}
-	
-
     static {
         try {
             ObjectMapper mapper = new ObjectMapper();
@@ -65,5 +61,6 @@ public class DataUtils {
         }
     }
 }
+
 
 
