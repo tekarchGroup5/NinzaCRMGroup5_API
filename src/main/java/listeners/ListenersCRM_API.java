@@ -5,7 +5,7 @@ import org.testng.ITestListener;
 import org.testng.ITestResult;
 
 import com.aventstack.extentreports.Status;
-import api_tests.BaseTestApi;
+import api_tests.api_BaseTest;
 
 public class ListenersCRM_API implements ITestListener {
 
@@ -16,25 +16,25 @@ public class ListenersCRM_API implements ITestListener {
 
     @Override
     public void onTestSuccess(ITestResult result) {
-        if (BaseTestApi.test.get() != null) {
-            BaseTestApi.test.get().log(Status.PASS, result.getName() + " PASSED");
+        if (api_BaseTest.test.get() != null) {
+            api_BaseTest.test.get().log(Status.PASS, result.getName() + " PASSED");
         }
         System.out.println("[API Test] " + result.getName() + " PASSED");
     }
 
     @Override
     public void onTestFailure(ITestResult result) {
-        if (BaseTestApi.test.get() != null) {
-            BaseTestApi.test.get().log(Status.FAIL, result.getName() + " FAILED");
-            BaseTestApi.test.get().log(Status.FAIL, result.getThrowable());
+        if (api_BaseTest.test.get() != null) {
+            api_BaseTest.test.get().log(Status.FAIL, result.getName() + " FAILED");
+            api_BaseTest.test.get().log(Status.FAIL, result.getThrowable());
         }
         System.out.println("[API Test] " + result.getName() + " FAILED: " + result.getThrowable());
     }
 
     @Override
     public void onTestSkipped(ITestResult result) {
-        if (BaseTestApi.test.get() != null) {
-            BaseTestApi.test.get().log(Status.SKIP, result.getName() + " SKIPPED");
+        if (api_BaseTest.test.get() != null) {
+            api_BaseTest.test.get().log(Status.SKIP, result.getName() + " SKIPPED");
         }
         System.out.println("[API Test] " + result.getName() + " SKIPPED");
     }
