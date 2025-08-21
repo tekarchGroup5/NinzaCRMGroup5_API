@@ -9,7 +9,7 @@
     <test name="Create Lead API Test">
         <classes>
             <!-- Fully qualified class name of your API test -->
-            <class name="api_tests.Lead_APITests"/>
+            <class name="api_tests.LeadAPI_Tests"/>
         </classes>
     </test>
 
