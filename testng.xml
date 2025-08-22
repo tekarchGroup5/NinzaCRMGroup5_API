@@ -20,5 +20,7 @@
             <class name="api_tests.Contact_APITest"/>
         </classes>
     </test>
+    
+    
 
 </suite>

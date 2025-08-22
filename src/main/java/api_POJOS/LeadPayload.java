@@ -1,6 +1,10 @@
 package api_POJOS;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class LeadPayload {
+	
 	 private String name;
 	    private String company;
 	    private String email;
