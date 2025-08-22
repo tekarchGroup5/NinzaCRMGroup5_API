@@ -10,8 +10,17 @@
         <classes>
 <!--             Fully qualified class name of your API test -->
             <class name="api_tests.LeadAPI_Tests"/>
+            
         </classes>
     </test>
+    
+    <test name="Create Campaign API Test">
+        <classes>
+<!--             Fully qualified class name of your API test -->
+            <class name="Campaign_APITests"/>
+        </classes>
+    </test>
+
 
 
  <test name="Create Contact API Test">
@@ -20,10 +29,13 @@
             <class name="api_tests.Contact_APITest"/>
         </classes>
     </test>
+
 <test name="Create Opportunity API Test">
         <classes>
             <!-- Fully qualified class name of your API test -->
             <class name="api_tests.Opportunity_APITests"/>
         </classes>
     </test>
+
+
 </suite>

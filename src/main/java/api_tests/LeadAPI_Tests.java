@@ -23,12 +23,20 @@ public class LeadAPI_Tests extends api_BaseTest
 	
 	@Test(priority = 1,enabled=true)//Test is working
 	public void createLeadWithMandatoryFields() throws IOException {
-	    test.set(extent.createTest("Verify Lead Creation with Mandatory Fields"));
+	    test.set(extent.createTest("Verify Lead Creation with Mandatory Fields"));//Creates a new report entry specifically for this test (Create Lead API Test).
 
-	    String campaignId = prop.getProperty("campaignId");
+
+        // Load JSON payload into POJO
+    	 //getClass().getClassLoader().getResourceAsStream("api_testData/leadPayload.json")
+    	// getClass() → “give me this current class.”
+
+    	// getClassLoader() → “give me the loader that finds files in resources.”
+
+    	// getResourceAsStream("api_testData/leadPayload.json") → “find the file leadPayload.json in the resources folder and open it as a stream.”
+	    String campaignId = prop.getProperty("campaignId");//Get the campaignId from the properties file.
 
 	    // Load mandatory payload from JSON
-	    ObjectMapper mapper = new ObjectMapper();
+	    ObjectMapper mapper = new ObjectMapper();//This is loading a JSON file and turning it into a Java object (POJO) so you can use it in your test.
 	    CreateLeadClassic_POJO leadPayload = mapper.readValue(
 	            getClass().getClassLoader().getResourceAsStream("api_testData/leadMandatoryPayload.json"),
 	            CreateLeadClassic_POJO.class
@@ -36,16 +44,16 @@ public class LeadAPI_Tests extends api_BaseTest
 
 	    // POST request and capture response in createdLead
 	    CreateLeadClassic_POJO createdLeadPayLoad = 
-	    	given()
-	            .queryParam("campaignId", campaignId)
-	            .body(leadPayload, ObjectMapperType.JACKSON_2)
-	        .when()
-	            .post("/lead")
+	    	given()//prepare the request
+	            .queryParam("campaignId", campaignId)//Adds ?campaignId=... to the URL.
+	            .body(leadPayload, ObjectMapperType.JACKSON_2)//Takes your lead POJO and serializes it to JSON using Jackson.
+	        .when()//send it
+	            .post("/lead")//validate the response
 	        .then()
-	            .log().all()
-	            .statusCode(201)
-	            .extract()
-	            .as(CreateLeadClassic_POJO.class, ObjectMapperType.JACKSON_2);
+	            .log().all()//Print the full response (status line, headers, body) to the console.
+	            .statusCode(201)//Assert that the response status is 201 Created.
+	            .extract()//
+	            .as(CreateLeadClassic_POJO.class, ObjectMapperType.JACKSON_2);//
 	    
 	    //comparing  leadPayload is the request object and createdLeadPayload is the response object
 	    assert createdLeadPayLoad.getIndustry().equals(leadPayload.getIndustry()) : "Industry mismatch";
