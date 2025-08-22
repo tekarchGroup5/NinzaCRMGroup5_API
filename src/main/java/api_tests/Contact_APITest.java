@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import api_POJOS.CreateContactClassic_POJO;
-import api_POJOS.CreateLeadClassic_POJO;
+
 import io.restassured.mapper.ObjectMapperType;
 import io.restassured.response.Response;
 
@@ -56,7 +56,7 @@ public class Contact_APITest extends api_BaseTest {
 	
 	
 	 // Create Contact - All Fields
-	@Test(priority = 1,enabled=false)//Test is working
+	@Test(priority = 2,enabled=true)//Test is working
 	public void createContactWithAllFields() throws IOException {
 	    test.set(extent.createTest("Create Contact - All Fields"));
 
@@ -97,7 +97,7 @@ public class Contact_APITest extends api_BaseTest {
 	}
 	// Update Contact
 	// -------------------------------
-	@Test(priority = 1,enabled=false)
+	@Test(priority = 3,enabled=true)
 	public void updateContact() throws IOException {
 	    test.set(extent.createTest("Update Contact Test"));
 
@@ -160,8 +160,8 @@ public class Contact_APITest extends api_BaseTest {
 
 	
 	// Delete Contact
-		// -------------------------------
-		@Test(priority = 1,enabled=false)//Test is working
+		
+		@Test(priority = 4,enabled=true)//Test is working
 		public void deleteLead() throws IOException {
 		    test.set(extent.createTest("Delete Contact Test"));
 
@@ -200,7 +200,7 @@ public class Contact_APITest extends api_BaseTest {
 		
 	
 	//
-	@Test(priority = 1, enabled = true)//tets working
+	@Test(priority = 5, enabled = true)//tets working
 	public void getAllContactsPaginated() {
 	    test.set(extent.createTest("Get All Contacts"));
 
@@ -220,7 +220,7 @@ public class Contact_APITest extends api_BaseTest {
 	    test.get().pass("Get all contact API executed successfully and validated");
 	}
 
-	@Test(priority = 2, enabled = true)//test working
+	@Test(priority = 6, enabled = true)//test working
 	public void getAllContacts() {
 	    test.set(extent.createTest("Get All Contacts - Paginated"));
 
@@ -239,7 +239,7 @@ public class Contact_APITest extends api_BaseTest {
 	}
 
 	
-	@Test(priority = 3,enabled=true)//test working
+	@Test(priority = 7,enabled=true)//test working
 	public void getContactCount() {
 	    test.set(extent.createTest("Get Contact Count"));
 
