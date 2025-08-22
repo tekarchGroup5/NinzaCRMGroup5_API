@@ -1,8 +1,0 @@
-{
-    "amount": "1000",
-    "businessType": "Pharmacy",
-    "nextStep": "create quote",
-    "opportunityId": "opp001",
-    "opportunityName": "opp_test1",
-    "salesStage": "intermediate"
-}
