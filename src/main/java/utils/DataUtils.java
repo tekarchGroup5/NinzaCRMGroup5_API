@@ -28,47 +28,47 @@ public class DataUtils {
 		String testData = DataUtils.readJsonFileToString(FileConstants.TEST_DATA_FILE_PATH);
 		return JsonPath.read(testData, jsonPath);
 	}
-    static {
-        try {
-            ObjectMapper mapper = new ObjectMapper();
-            root = mapper.readTree(new File(FileConstants.OPP_API_TESTDATA_FILE_PATH));
-        } catch (IOException e) {
-            throw new RuntimeException("Failed to load test data", e);
-        }
-    }
-    
-    // 🔹 Get value using Jayway JSONPath
-    public static Object getByJsonPath(String jsonPath) throws IOException {
-        String testData = readJsonFileToString(FileConstants.OPP_API_TESTDATA_FILE_PATH);
-        return JsonPath.read(testData, jsonPath);
-    }
-
-
-    public static JsonNode getHeaders() {
-        return root.get("headers");
-    }
-
-    public static String getEndpoint(String key) {
-        return root.get("endpoints").get(key).asText();
-    }
-
-    public static JsonNode getTestCase(String testCaseId) {
-        return root.get("testCases").get(testCaseId);
-    }
-    public static OpportunitiesPojo getTestCaseAsPojo(String testCaseId) {// CONVERT TEST CASE JSON -> POJO				
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            return mapper.treeToValue(getTestCase(testCaseId), OpportunitiesPojo.class);
-        } catch (Exception e) {
-            throw new RuntimeException("Failed to convert test case to POJO: " + testCaseId, e);
-        }
-    }
-
-	public static Map<String, String> convertJsonNodeToMap(JsonNode jsonNode) {
-		Map<String, String> map = new HashMap<>();
-	    jsonNode.fieldNames().forEachRemaining(field -> map.put(field, jsonNode.get(field).asText()));
-	    return map;
-	}
+//    static {
+//        try {
+//            ObjectMapper mapper = new ObjectMapper();
+//            root = mapper.readTree(new File(FileConstants.OPP_API_TESTDATA_FILE_PATH));
+//        } catch (IOException e) {
+//            throw new RuntimeException("Failed to load test data", e);
+//        }
+//    }
+//    
+//    // 🔹 Get value using Jayway JSONPath
+//    public static Object getByJsonPath(String jsonPath) throws IOException {
+//        String testData = readJsonFileToString(FileConstants.OPP_API_TESTDATA_FILE_PATH);
+//        return JsonPath.read(testData, jsonPath);
+//    }
+//
+//
+//    public static JsonNode getHeaders() {
+//        return root.get("headers");
+//    }
+//
+//    public static String getEndpoint(String key) {
+//        return root.get("endpoints").get(key).asText();
+//    }
+//
+//    public static JsonNode getTestCase(String testCaseId) {
+//        return root.get("testCases").get(testCaseId);
+//    }
+//    public static OpportunitiesPojo getTestCaseAsPojo(String testCaseId) {// CONVERT TEST CASE JSON -> POJO				
+//        ObjectMapper mapper = new ObjectMapper();
+//        try {
+//            return mapper.treeToValue(getTestCase(testCaseId), OpportunitiesPojo.class);
+//        } catch (Exception e) {
+//            throw new RuntimeException("Failed to convert test case to POJO: " + testCaseId, e);
+//        }
+//    }
+//
+//	public static Map<String, String> convertJsonNodeToMap(JsonNode jsonNode) {
+//		Map<String, String> map = new HashMap<>();
+//	    jsonNode.fieldNames().forEachRemaining(field -> map.put(field, jsonNode.get(field).asText()));
+//	    return map;
+//	}
 }
 
 

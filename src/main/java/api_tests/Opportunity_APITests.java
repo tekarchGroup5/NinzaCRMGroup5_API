@@ -1,64 +1,52 @@
 package api_tests;
 
-import java.util.HashMap;
+import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.fasterxml.jackson.databind.JsonNode;
-
+import com.fasterxml.jackson.core.exc.StreamReadException;
+import com.fasterxml.jackson.databind.DatabindException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import api_POJOS.OpportunitiesPojo;
-import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
+import static io.restassured.RestAssured.*;
+import io.restassured.mapper.ObjectMapperType;
 import io.restassured.response.Response;
-import utils.DataUtils;
-import utils.RestUtils;
+import io.restassured.http.ContentType;
 
 public class Opportunity_APITests extends api_BaseTest {
 	// -------------------------------
-    // Create opportunity with Mandatory Fields
-    // -------------------------------
+	// Create opportunity with Mandatory Fields
+	// -------------------------------
+
+	@Test(priority = 1, enabled = true)
+	public void createOpportunityWithMandatoryFields() throws StreamReadException, DatabindException, IOException {
+		test.set(extent.createTest("Verify Lead Creation with mandatory fields"));
+
+		String leadId = prop.getProperty("leadId");
+		// Load mandatory Payload From Json
+		ObjectMapper mapper = new ObjectMapper();
+		OpportunitiesPojo oppPayload = mapper.readValue(
+				getClass().getClassLoader().getResourceAsStream("api_testData/OppTestData.json"),
+				OpportunitiesPojo.class);
+
+//		System.out.println(new ObjectMapper().writeValueAsString(oppPayload));
+
+		// Post request
+
+		OpportunitiesPojo createdOppPayload = given().queryParam("leadId", leadId)
+				.body(oppPayload, ObjectMapperType.JACKSON_2).contentType(ContentType.JSON).when().post("/opportunity")
+				.then().statusCode(201).extract().as(OpportunitiesPojo.class, ObjectMapperType.JACKSON_2);
+
+	assert createdOppPayload.getAmount().equals(oppPayload.getAmount()) : "Amount is not matching";
+	assert createdOppPayload.getBusinessType().equals(oppPayload.getBusinessType()) : "Business Type is not matching";
+	assert createdOppPayload.getNextStep().equals(oppPayload.getNextStep()) : "Next Step is not matching";
+	assert createdOppPayload.getOpportunityName().equals(oppPayload.getOpportunityName()) : "Opportunity name is not matching";
+	assert createdOppPayload.getSalesStage().equals(oppPayload.getSalesStage()) : "Sales Stage is not matching";
 	
-	@Test(priority = 1,enabled=true)
-	public void createOpportunityWithMandatoryFields() {
-		   // -------------------------------
-        // Step 1: Prepare Headers
-        // -------------------------------
-        HashMap<String, String> headers = new HashMap<>(DataUtils.convertJsonNodeToMap(DataUtils.getHeaders()));
-
-        // -------------------------------
-        // Step 2: Prepare Endpoint
-        // -------------------------------
-        String endpoint = DataUtils.getEndpoint("createOpportunity");
-
-        // -------------------------------
-        // Step 3: Prepare Payload (POJO)
-        // -------------------------------
-        OpportunitiesPojo opportunity = DataUtils.getTestCaseAsPojo(
-                "TC_001_CreateOpportunityWithMandatoryFields");
-
-        // -------------------------------
-        // Step 4: Prepare Query Params
-        // -------------------------------
-        HashMap<String, String> queryParams = new HashMap<>();
-        queryParams.put("leadId", prop.getProperty("leadId"));
-
-        // -------------------------------
-        // Step 5: Call POST API with query params
-        // -------------------------------
-        Response response = RestUtils.postReqWithQuery(headers, opportunity, endpoint, queryParams, 201);
-
-        // -------------------------------
-        // Step 6: Validate Response
-        // -------------------------------
-        Assert.assertEquals(response.getStatusCode(), 201, "Status code mismatch!");
-        
-        String opportunityId = response.jsonPath().getString("opportunityId");
-        Assert.assertNotNull(opportunityId, "Opportunity ID should not be null!");
-
-        System.out.println("Created Opportunity ID: " + opportunityId);
-    }
+	
+	
+		
+	}
 }
-
-
