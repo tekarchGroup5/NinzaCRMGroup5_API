@@ -1,0 +1,23 @@
+{
+    "headers": {
+        "Content-Type": "application/json"
+    },
+    "endpoints": {
+        "createOpportunity": "/opportunity",
+        "updateOpportunity": "/opportunity?opportunityId={id}",
+        "getOpportunities": "/opportunity/all",
+        "getOpportunityNonpageable": "/opportunity/all-opportunities",
+        "getOpportunityCount": "/opportunity/count",
+        "deleteOpportunity": "/opportunity?opportunityId={id}"
+    },
+    "testCases": {
+        "TC_001_CreateOpportunityWithMandatoryFields": {
+            "amount": "1000",
+            "businessType": "Pharmacy",
+            "nextStep": "create quote",
+            "opportunityId": "opp001",
+            "opportunityName": "opp_test1",
+            "salesStage": "intermediate"
+        }
+    }
+}
