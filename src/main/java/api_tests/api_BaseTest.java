@@ -40,7 +40,7 @@ public class api_BaseTest {
         // Load properties
         prop = new Properties();
         try (InputStream input = getClass().getClassLoader()
-                .getResourceAsStream("api_testData/api_config.properties")) {
+                .getResourceAsStream("api_config.properties")) {
             if (input == null) throw new RuntimeException("api_config.properties not found");
             prop.load(input);
         }
