@@ -1,0 +1,44 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/Welcome5",
+    "definitions": {
+        "Welcome5": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "campaignId": {
+                    "type": "string"
+                },
+                "campaignName": {
+                    "type": "string"
+                },
+                "campaignStatus": {
+                    "type": "string"
+                },
+                "targetSize": {
+                    "type": "integer"
+                },
+                "expectedCloseDate": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "targetAudience": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "campaignId",
+                "campaignName",
+                "campaignStatus",
+                "description",
+                "expectedCloseDate",
+                "targetAudience",
+                "targetSize"
+            ],
+            "title": "Welcome5"
+        }
+    }
+}
