@@ -57,7 +57,7 @@ public class api_BaseTest {
             .setBaseUri(baseUri)
             .setAuth(RestAssured.preemptive().basic(username, password))
             .addHeader("Content-Type", "application/json")
-            .addHeader("Accept", "application/json")
+          //  .addHeader("Accept", "application/json")
             .addFilter(new RequestLoggingFilter())
             .addFilter(new ResponseLoggingFilter())
             .build();
