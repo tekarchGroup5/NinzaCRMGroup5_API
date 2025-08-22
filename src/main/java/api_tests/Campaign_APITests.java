@@ -25,7 +25,7 @@ package api_tests;
 	import static org.hamcrest.Matchers.*;
 	import static org.testng.Assert.assertEquals;
 
-	public class Campaign_APITests {
+	public class Campaign_APITests extends api_BaseTest {
 
 		@BeforeTest
 		public void initialize() throws IOException {
@@ -46,6 +46,8 @@ package api_tests;
 		
 		@Test (enabled = true)
 		public void TC1_Get_Campaign_with_Ten_the_records() throws IOException {
+			
+			test.set(extent.createTest("Create campaign with all the records"));
 		
 			ObjectMapper objMapper = new ObjectMapper();
 			//String endPoint = DataUtils.getTestData("$.endpoints.getdata");
@@ -64,6 +66,8 @@ package api_tests;
 		@Test
 		public void TC3_Successful_Campaign_Creation() throws JsonProcessingException, IOException {
 					
+			test.set(extent.createTest("Verify that campaign is created with all the records"));
+
 					ObjectMapper objMapper = new ObjectMapper();
 					objMapper.setVisibility(PropertyAccessor.FIELD, Visibility.ANY);
 				    String payload = objMapper.writeValueAsString(DataUtils.getTestData("$.payloads.addUser"));
@@ -89,6 +93,8 @@ package api_tests;
 		@Test
 		public void TC4_Create_records_with_mandatory_fields() throws JsonProcessingException, IOException {
 			
+			test.set(extent.createTest("Campaign is created with mandatory records"));
+
 			ObjectMapper objMapper = new ObjectMapper();
 			objMapper.setVisibility(PropertyAccessor.FIELD, Visibility.ANY);
 		    String payload = objMapper.writeValueAsString(DataUtils.getTestData("$.payloads.mandatField"));
@@ -106,6 +112,8 @@ package api_tests;
 		@Test  //failed: expected [400] but found [201]
 		public void TC5_Create_record_with_Size_lessthan_1() throws JsonProcessingException, IOException {
 			
+			test.set(extent.createTest("Campaign is created with Size less than 1"));
+
 			ObjectMapper objMapper = new ObjectMapper();
 			objMapper.setVisibility(PropertyAccessor.FIELD, Visibility.ANY);
 		    String payload = objMapper.writeValueAsString(DataUtils.getTestData("$.payloads.targetsize"));
@@ -122,6 +130,8 @@ package api_tests;
 		@Test   //Failed:expected [400] but found [201]
 		public void TC6_Create_record_without_mandatory_field_Name() throws JsonProcessingException, IOException {
 		  
+			test.set(extent.createTest("Campaign is created without mandatory Name"));
+
 			ObjectMapper objMapper = new ObjectMapper();
 			objMapper.setVisibility(PropertyAccessor.FIELD, Visibility.ANY);
 		    String payload = objMapper.writeValueAsString(DataUtils.getTestData("$.payloads.noname"));
@@ -139,6 +149,8 @@ package api_tests;
 		@Test  //Failed: expected [400] but found [201]
 		public void TC7_Create_record_without_mandatory_field_Size() throws JsonProcessingException, IOException {
 		 
+			test.set(extent.createTest("Campaign is created without mandatory field Size"));
+
 			ObjectMapper objMapper = new ObjectMapper();
 			objMapper.setVisibility(PropertyAccessor.FIELD, Visibility.ANY);
 		    String payload = objMapper.writeValueAsString(DataUtils.getTestData("$.payloads.notsize"));
@@ -156,6 +168,8 @@ package api_tests;
 		@Test
 		public void TC8_Update_Campaign_with_mandatory_field_change_in_Name() throws JsonProcessingException, IOException {
 			
+			test.set(extent.createTest("Update Campaign with change in mandatory name"));
+
 			//Creating mandatory records   
 			ObjectMapper objMapper = new ObjectMapper();
 			objMapper.setVisibility(PropertyAccessor.FIELD, Visibility.ANY);
@@ -186,6 +200,8 @@ package api_tests;
 		@Test  //failed
 		public void TC9_Update_Campaign_with_mandatory_field_change_in_Size() throws JsonProcessingException, IOException {
 			
+			test.set(extent.createTest("Update Campaign is created with change in mandatory field Size"));
+
 			//Creating mandatory records   
 					ObjectMapper objMapper = new ObjectMapper();
 					objMapper.setVisibility(PropertyAccessor.FIELD, Visibility.ANY);
@@ -223,14 +239,12 @@ package api_tests;
 				//	Assert.assertTrue(statusCode1 == 200, "Expected status code 200 for successful updation but was: " + statusCode1);		
 				 
 		}
-		/*public void TC10_Update_Campaign_with_date() {}
-		public void TC11_Update_Campaign_with_Status() {}
-		public void TC12_Update_Campaign_with_TargetAudience() {} 
-		public void TC13_Delete_Campaign_Using_Name() {}*/
 		
 		@Test
 		public void TC14_Delete_Campaign_using_ID() throws JsonProcessingException, IOException {
 			
+			test.set(extent.createTest("Delete Campaign using ID"));
+
 			//Create record before deletion
 			ObjectMapper objMapper = new ObjectMapper();
 			objMapper.setVisibility(PropertyAccessor.FIELD, Visibility.ANY);
@@ -257,6 +271,8 @@ package api_tests;
 		@Test
 		public void TC16_Delete_Campaign_after_Updation() throws JsonProcessingException, IOException {
 			//Creating record for deletion
+			test.set(extent.createTest("Delete Campaign after updation "));
+
 			
 			AddCampaignPojo campaign1 = new AddCampaignPojo("","AutoTechExpo", "ongoing", "25", "2025-09-30", "Tech Companies", "This Campaign is to reach out technology companies");
 
@@ -292,6 +308,9 @@ package api_tests;
 		@Test  //Failing :  expected [400] but found [201]
 		public void TC21_Create_Record_with_Invalid_Date() throws IOException {
 			
+			test.set(extent.createTest("Create Campaign with invalid date"));
+
+			
 			AddCampaignPojo campaign2 = new AddCampaignPojo("","AutoTechExpo", "ongoing", "25", "456-09-40", "Tech Companies", "This Campaign is to reach out technology companies");
 
 			
@@ -307,6 +326,12 @@ package api_tests;
 			Assert.assertEquals(addUsersResponse.statusCode(), 400);
 			Assert.assertTrue(addUsersResponse.statusCode() == 400,"Expected status code 400 for successful deletion but was: " + addUsersResponse.statusCode());
 		}
+		
+		/*public void TC10_Update_Campaign_with_date() {}
+		public void TC11_Update_Campaign_with_Status() {}
+		public void TC12_Update_Campaign_with_TargetAudience() {} 
+		public void TC13_Delete_Campaign_Using_Name() {}*/
+		
 		//public void TC17_Check_Pagination() {}
 		//public void TC18_Duplicate_Campaign_name() {}
 		/*public void TC19_Create_record_with_Zero_Size() {}
