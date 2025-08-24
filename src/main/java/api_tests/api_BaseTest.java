@@ -26,7 +26,7 @@ public class api_BaseTest {
 
     protected Properties prop;
     protected ExtentReports extent;
-    public static ThreadLocal<ExtentTest> test = new ThreadLocal<>(); // ✅ fixed
+    public static ThreadLocal<ExtentTest> test = new ThreadLocal<>(); // 
 
     @BeforeClass//Method runs once before any test methods in the current class.
     public void configSetup() throws IOException {
@@ -55,7 +55,6 @@ public class api_BaseTest {
             .setBaseUri(baseUri)//
             .setAuth(RestAssured.preemptive().basic(username, password))//
             .addHeader("Content-Type", "application/json")//
-          //  .addHeader("Accept", "application/json")//Adds Content-Type: application/json header.
             .addFilter(new RequestLoggingFilter())//Adds filters to log requests and responses to console/output.
             .addFilter(new ResponseLoggingFilter())//Adds filters to log requests and responses to console/output.
             .build();
