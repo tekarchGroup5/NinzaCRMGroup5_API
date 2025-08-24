@@ -22,6 +22,21 @@
         </classes>
     </test>
     
+    <test name="Create Opportunity API Test">
+        <classes>
+            <!-- Fully qualified class name of your API test -->
+            <class name="api_tests.Opportunity_APITests"/>
+        </classes>
+    		
+  </test>
+  
+  <test name="Create Campaign API Test">
+        <classes>
+            <!-- Fully qualified class name of your API test -->
+            <class name="api_tests.Campaign_APITests"/>
+        </classes>
+  
+   </test>
     
 
 </suite>
