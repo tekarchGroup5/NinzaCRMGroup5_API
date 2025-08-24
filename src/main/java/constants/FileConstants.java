@@ -24,9 +24,12 @@ public class FileConstants {
 //	public static final String TEST_DATA_FILE_PATH = ROOT_PATH + "/src/main/java/testData/testData.json";
 	//public static final String LOGIN_SCHEMA_FILE_PATH = ROOT_PATH + "/src/main/java/schemaValidations/loginResponseSchema.json";
 	public static final String OPP_API_TESTDATA_FILE_PATH = ROOT_PATH
+
 			+ "/src/main/java/api_testData/OpportunityTestData.json";
 	public static final String TEST_DATA_FILE_PATH = System.getProperty("user.dir")+"/src/main/resources/api_testData/CampaignAPItestData.json";
 	public static final String LOGIN_SCHEMA_FILE_PATH = System.getProperty("user.dir") + "/src/main/java/schemaValidations/campaignResponseSchema.json";
+	public static final String CreateUser_Schema_PATH = ROOT_PATH + "/src/main/java/schemaValidations/CreateUser_Schema.json";
+
 
 	
 }
