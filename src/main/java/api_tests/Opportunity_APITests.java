@@ -54,7 +54,7 @@ public class Opportunity_APITests extends api_BaseTest {
 	test.get().pass("Opportunity with only mandatory fields created Successfully");
 		
 	}
-	@Test(priority=2, enabled = false, dependsOnMethods= "createOpportunity")
+	@Test(priority=2, enabled = true, dependsOnMethods= "createOpportunity")
 	public void updateOpportunityWithMandatoryFields(ITestContext context) throws StreamReadException, DatabindException, IOException {
 	test.set(extent.createTest("Update Opportunity with Mandatory Fields"));
 	
@@ -100,7 +100,7 @@ public class Opportunity_APITests extends api_BaseTest {
 	}
 
 	//Helper Test to get the OpportunityId after creation
-		@Test(priority = 1,enabled =false)
+		@Test(priority = 1,enabled =true)
 		public void  createOpportunity(ITestContext context) throws StreamReadException, DatabindException, IOException {
 			String leadId = prop.getProperty("leadId");
 			ObjectMapper mapper = new ObjectMapper();
