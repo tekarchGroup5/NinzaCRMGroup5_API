@@ -1,0 +1,11 @@
+{
+    "createUser":
+    {
+        "adduser":"/admin/create-user",
+        "deleteuser":"/admin/user",
+        "getallusers":"/admin/users",
+        "getUsersCount":"/admin/users-count",
+        "pagination":"/admin/users-paginated"
+    }
+
+}
