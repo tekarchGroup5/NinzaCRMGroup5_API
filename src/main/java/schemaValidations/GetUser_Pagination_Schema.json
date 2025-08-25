@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": [
+    "pageable", "totalElements", "last", "totalPages", "size",
+    "number", "sort", "first", "numberOfElements", "empty"
+  ],
+  "properties": {
+    "pageable": {
+      "type": "object",
+      "required": ["sort", "offset", "pageNumber", "pageSize", "unpaged", "paged"],
+      "properties": {
+        "sort": {
+          "type": "object",
+          "required": ["unsorted", "sorted", "empty"],
+          "properties": {
+            "unsorted": { "type": "boolean" },
+            "sorted": { "type": "boolean" },
+            "empty": { "type": "boolean" }
+          }
+        },
+        "offset": { "type": "integer" },
+        "pageNumber": { "type": "integer" },
+        "pageSize": { "type": "integer" },
+        "unpaged": { "type": "boolean" },
+        "paged": { "type": "boolean" }
+      }
+    },
+    "totalElements": { "type": "integer" },
+    "last": { "type": "boolean" },
+    "totalPages": { "type": "integer" },
+    "size": { "type": "integer" },
+    "number": { "type": "integer" },
+    "sort": {
+      "type": "object",
+      "required": ["unsorted", "sorted", "empty"],
+      "properties": {
+        "unsorted": { "type": "boolean" },
+        "sorted": { "type": "boolean" },
+        "empty": { "type": "boolean" }
+      }
+    },
+    "first": { "type": "boolean" },
+    "numberOfElements": { "type": "integer" },
+    "empty": { "type": "boolean" },
+
+    "content": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "empId", "empName", "mobileNo", "email", "dob",
+          "experience", "username", "designation", "password",
+          "role", "department"
+        ],
+        "properties": {
+          "empId": { "type": "string" },
+          "empName": { "type": "string" },
+          "mobileNo": { "type": "string" },
+          "email": { "type": "string", "format": "email" },
+          "dob": { "type": ["string", "null"] },
+          "experience": { "type": "number" },
+          "username": { "type": "string" },
+          "designation": { "type": ["string", "null"] },
+          "password": { "type": "string" },
+          "role": { "type": "string" },
+          "department": { "type": ["string", "null"] }
+        }
+      }
+    }
+  }
+}

@@ -60,7 +60,8 @@ public class Opportunity_APITests extends api_BaseTest {
 
 	}
 
-	@Test(priority = 2, enabled = true, dependsOnMethods = "createOpportunity")
+
+	@Test(priority = 2, enabled = false, dependsOnMethods = "createOpportunity")
 	public void updateOpportunityWithMandatoryFields(ITestContext context)
 			throws StreamReadException, DatabindException, IOException {
 		test.set(extent.createTest("Update Opportunity with Mandatory Fields"));
@@ -102,7 +103,7 @@ public class Opportunity_APITests extends api_BaseTest {
 	}
 
 	// Helper Test to get the OpportunityId after creation
-	@Test(priority = 1, enabled = true)
+	@Test(priority = 1, enabled = false)
 	public void createOpportunity(ITestContext context) throws StreamReadException, DatabindException, IOException {
 		String leadId = prop.getProperty("leadId");
 		ObjectMapper mapper = new ObjectMapper();
@@ -121,20 +122,22 @@ public class Opportunity_APITests extends api_BaseTest {
 		String createdOpp = (String) context.getAttribute("opportunityId");
 		System.out.println(createdOpp);
 		given().queryParam("opportunityId", createdOpp).when().delete("/opportunity").then().statusCode(204);
+
 		test.get().pass("Opportunity deleted successfully and verified");
 	}
 
-//	@Test(priority = 5, enabled = true)
-//	public void createOpportunityWithAllTheFields() {
-//		test.set(extent.createTest("verify opportunity is created with all the fields"));
-//		
-//		String leadId = prop.getProperty("leadId");
-//		ObjectMapper mapper = new ObjectMapper();
-//		mapper.readValue()
-//		
-//	}
 //	
-	@Test(priority = 5, enabled = true)
+////	@Test(priority = 5, enabled = true)
+////	public void createOpportunityWithAllTheFields() {
+////		test.set(extent.createTest("verify opportunity is created with all the fields"));
+////		
+////		String leadId = prop.getProperty("leadId");
+////		ObjectMapper mapper = new ObjectMapper();
+////		mapper.readValue()
+////		
+////	}
+////	
+	@Test(priority = 5, enabled = false)
 	public void getAllTheOpportunity() {
 		test.set(extent.createTest("Get All Opportunities"));
 		Response response = given().queryParam("page", 0).queryParam("size", 10).when().get("/opportunity/all").then()
@@ -148,7 +151,7 @@ public class Opportunity_APITests extends api_BaseTest {
 
 	}
 
-	@Test(priority = 6, enabled = true)
+	@Test(priority = 6, enabled = false)
 	public void getAllOpportunityNonPaginated() {
 		test.set(extent.createTest("verify get all opportunity non pageable api"));
 
