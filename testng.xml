@@ -44,5 +44,14 @@
          
         </classes>
     </test>
+    
+    
+ <test name="CreateUser API Test">
+        <classes>
+<!--             Fully qualified class name of your API test -->
+           <class name="api_tests.CreateUserTest"/>
+         
+        </classes>
+    </test>   
 
 </suite>

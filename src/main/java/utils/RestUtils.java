@@ -6,7 +6,10 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
@@ -119,5 +122,38 @@ public class RestUtils {
 		response.then().assertThat().body(matchesJsonSchema(new File(filePath)));
 	}
 	
+	
+	public static Response postReq(String payload, HashMap<String, String> headers, String endpoint) {
+		return	RestAssured.given().headers(headers).when().body(payload).post(endpoint);
+		}
+	
+	public static Response postReq(Object payload, HashMap<String, String> headers, String endpoint) {
+		return	RestAssured.given().headers(headers).when().body(payload).post(endpoint);
+		}
+	
+	public static Response deleteReq(HashMap<String, String> headers, String path ,Map<String, String> queryParams,int expectedStatus) {
+//		Response delRes = RestAssured.given().headers(headers).queryParams(queryParams).when().delete(path).then().statusCode(expectedStatus)
+//				.extract().response();
+		
+		Response delRes =	RestAssured.given()
+	    .headers(headers)
+	    .queryParams(queryParams)
+	.when()
+	    .delete(path)
+	.then()
+	    .statusCode(expectedStatus) 
+	    .extract().response();  
+		return delRes;
+	}
+	
+	
+	public static String serializeObject(Object user) throws JsonProcessingException {
+		ObjectMapper om = new ObjectMapper();
+		om.setPropertyNamingStrategy(PropertyNamingStrategies.LOWER_CASE);
+		String sJasonPayload = om.writeValueAsString(user);
+		
+		System.out.println(sJasonPayload);
+		return sJasonPayload;
+	}
 	
 }
