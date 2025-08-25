@@ -18,6 +18,7 @@
 		<freemarker.version>2.3.31</freemarker.version>
 		<groovy.version>3.0.19</groovy.version>
 		<extentreports.version>5.0.9</extentreports.version>
+		
 	</properties>
 
 	<dependencies>
@@ -137,6 +138,7 @@
 			<artifactId>webdrivermanager</artifactId>
 			<version>5.8.0</version>
 		</dependency>
+	
 
 		<!-- Apache POI -->
 		<dependency>

@@ -1,0 +1,12 @@
+{
+    "amount": "1000",
+    "businessType": "Pharmacy",
+    "assignedTo": "TestUser",
+    "expectedCloseDate": "2025-08-20",
+    "nextStep": "create quote",
+    "opportunityId": "string",
+    "opportunityName": "opp_testAllFields",
+    "salesStage": "intermediate",
+    "probability": "80",
+    "description": "End-to-end testing ensures all components of the application, from UI to backend APIs, function as expected under."
+}

@@ -27,9 +27,11 @@ public class FileConstants {
 
 			+ "/src/main/java/api_testData/OpportunityTestData.json";
 	public static final String TEST_DATA_FILE_PATH = System.getProperty("user.dir")+"/src/main/resources/api_testData/CampaignAPItestData.json";
-	public static final String LOGIN_SCHEMA_FILE_PATH = System.getProperty("user.dir") + "/src/main/java/schemaValidations/campaignResponseSchema.json";
+	public static final String LOGIN_SCHEMA_FILE_PATH = System.getProperty("user.dir")+"/src/main/java/schemaValidations/campaignResponseSchema.json";
 	public static final String CreateUser_Schema_PATH = ROOT_PATH + "/src/main/java/schemaValidations/CreateUser_Schema.json";
-
-
-	
+	public static final String DeleteUser_Schema_PATH = ROOT_PATH + "/src/main/java/schemaValidations/DeleteUser_Schema.json";
+	public static final String GetUser_Schema_PATH = ROOT_PATH + "/src/main/java/schemaValidations/GetUser_Schema.json";
+	public static final String GetUser_Count_Schema_PATH = ROOT_PATH + "/src/main/java/schemaValidations/GetUser_Count_Schema.json";
+	public static final String GetUser_Pagination_Schema_PATH = ROOT_PATH + "/src/main/java/schemaValidations/GetUser_Pagination_Schema.json";
+	public static final String R_CreateUserSchema_PATH = ROOT_PATH + "/src/main/java/schemaValidations/R_CreateUserSchema.json";		
 }

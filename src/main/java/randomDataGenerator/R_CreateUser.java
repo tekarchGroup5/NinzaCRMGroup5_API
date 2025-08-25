@@ -1,9 +1,8 @@
 package randomDataGenerator;
+
 import com.github.javafaker.Faker;
 
-public class CreateUser {
-	
-	
+public class R_CreateUser {
 	private static Faker faker = new Faker();
 
     public static String getEmpName() {
@@ -26,9 +25,4 @@ public class CreateUser {
         return faker.internet().password(6, 20, true, true);
     }
     
-    
-    
-    
-    
 }
-

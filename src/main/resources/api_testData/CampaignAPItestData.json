@@ -1,62 +1,51 @@
 {
-	"headers": {
-		"Content-Type": "application/json"
-	},
-	"payloads": {
-		"login": {
-			"username": "rmgyantra",
-			"password": "rmgy@9999"
-		},
-		"addUser": {
-			    "campaignId": "",
-			    "campaignName": "AutoTechExpo123",
-			    "campaignStatus": "ongoing",
-			    "targetSize": 25,
-			    "expectedCloseDate": "2025-09-30",
-			    "targetAudience": "Tech Companies",
-			    "description": "This Campaign is to reach out technology companies"
-		},
-		"mandatField": {
-				"campaignName": "AutoTechExpo12345",
-				"targetSize": 125,
-				},
-		"targetsize": {
-				"campaignName": "AutoTechExpo12345",
-				"targetSize": -2,
-				},
-		"mandatField": {
-				"campaignName": "AutoTechExpo12345",
-				"targetSize": 125,
-				},
-		"notsize": {
-				"campaignName": "AutoTechExpo12345",
-				"targetSize": ,
-								},
-		"noname": {
-				"campaignName": "",
-				"targetSize": 10,
-				},
-		"deleterecord": {
-			   "campaignId":"CAM08167"
-				},		
-	},
-	"endpoints": {
-		"login": "/login",
-		"adddata": "/campaign",
-		"update" : "/campaign?campaignId=",
-		"getdata": "/campaign/all?page=undefined&size=10",
-		"delete": "/campaign?campaignId=",
-		"logout": ""
-	}
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "payloads": {
+    "login": {
+      "username": "rmgyantra",
+      "password": "rmgy@9999"
+    },
+    "addUser": {
+      "campaignId": "",
+      "campaignName": "AutoTechExpo123",
+      "campaignStatus": "ongoing",
+      "targetSize": 25,
+      "expectedCloseDate": "2025-09-30",
+      "targetAudience": "Tech Companies",
+      "description": "This Campaign is to reach out technology companies"
+    },
+    "mandatoryField": {
+      "campaignName": "AutoTechExpo12345",
+      "targetSize": 125
+    },
+    "targetSizeInvalid": {
+      "campaignName": "AutoTechExpo12345",
+      "targetSize": -2
+    },
+    "notSize": {
+      "campaignName": "AutoTechExpo12345",
+      "targetSize": null
+    },
+	"targetsize": {
+	     "campaignName": "AutoTechExpo12345",
+	     "targetSize": 0
+	   },
+    "noName": {
+      "campaignName": "",
+      "targetSize": 10
+    },
+    "deleteRecord": {
+      "campaignId": "CAM08167"
+    }
+  },
+  "endpoints": {
+    "login": "/login",
+    "addData": "/campaign",
+    "update": "/campaign?campaignId=",
+    "getData": "/campaign/all?page=undefined&size=10",
+    "delete": "/campaign?campaignId=",
+    "logout": ""
+  }
 }
-/*
-{
-    "campaignId": "CAM07131",
-    "campaignName": "AutoTechExpo",
-    "campaignStatus": "ongoing",
-    "targetSize": 25,
-    "expectedCloseDate": "2025-09-30",
-    "targetAudience": "Tech Companies",
-    "description": "This Campaign is to reach out technology companies"
-}
-*/

@@ -30,5 +30,11 @@
   "rating": "2",
   "secondaryEmail": "Madhu_TesLead5@example.com",
   "website": "https://www.group5Solutions.com"
-}
+},
+ "updatedLeadFields": {
+    "company": "Updated Company",
+    "annualRevenue": 999999,
+    "phone": "+1-555-999-8888",
+    "city": "Updated City"
+  }
 }

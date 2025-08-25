@@ -8,28 +8,79 @@ public class CreateUser_POJO {
 	private String email;
 	private String empName;
 	private String experience;
-	private int mobileNo;
-	private int role;
-	private int username;
+	private String mobileNo;
+	private String role;
+	private String username;
+	private String password;
 	
-
 	// Default constructor
-	public CreateUser_POJO(String dept, String des, String dob, String email, String eName,String expe)
+	public CreateUser_POJO
+	(String department, 
+	String designation, 
+	String dob, 
+	String email, 
+	String empName,
+	String experience,
+	String mobileNo,
+	String role,
+	String username,
+	String password)
 	{
+		this.department = department;
+        this.designation = designation;
+        this.dob = dob;
+        this.email = email;
+        this.empName = empName;
+        this.experience = experience;
+        this.mobileNo = mobileNo;
+        this.role =role;
+        this.username = username;
+        this.password =password;
+		
+	}
+	
+	public String getdepartment() {
+		return department;
+	}
+	
+	public String getdesignation() {
+		return designation;
+	}
+	
+	public String getdob() {
+		return dob;
+	}
+	
+	public String getemail() {
+		return email;
+	}
+	
+	public String getempName() {
+		return empName;
+	}
+	
+	public String getexp() {
+		return experience;
+	}
+	
+	public String getmobileNo() {
+		return mobileNo;
+	}
+	
+	public String getrole() {
+		return role;
+	}
+	
+	public String getusername() {
+		return username;
+	}
+	
+	public String getpassword() {
+		return password;
 	}
 	
 	
-	
 
-//	"department": "string",
-//	  "designation": "string",
-//	  "dob": "string",
-//	  "email": "string",
-//	  "empName": "string",
-//	  "experience": 0,
-//	  "mobileNo": "string",
-//	  "role": "string",
-//	  "username": "string"
 	
 
 }
