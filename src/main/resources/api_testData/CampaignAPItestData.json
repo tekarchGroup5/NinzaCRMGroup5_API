@@ -28,6 +28,10 @@
       "campaignName": "AutoTechExpo12345",
       "targetSize": null
     },
+	"targetsize": {
+	     "campaignName": "AutoTechExpo12345",
+	     "targetSize": 0
+	   },
     "noName": {
       "campaignName": "",
       "targetSize": 10
