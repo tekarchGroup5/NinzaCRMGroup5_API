@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import api_POJOS.CreateLeadClassic_POJO;
+import api_tests.api_BaseTest;
 import io.restassured.mapper.ObjectMapperType;
 import io.restassured.response.Response;
 
