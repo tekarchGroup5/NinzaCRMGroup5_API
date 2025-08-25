@@ -1,49 +1,58 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="API Test Suite" verbose="1" parallel="false">
 
-	<!-- Attach listener for API tests -->
-	<listeners>
-		<listener class-name="listeners.ListenersCRM_API" />
-	</listeners>
+    <!-- Attach listener for API tests -->
+    <listeners>
+        <listener class-name="listeners.ListenersCRM_API"/>
+    </listeners>
+
+    <test name="Create Lead API Test">
+        <classes>
+<!--             Fully qualified class name of your API test -->
+            <class name="api_tests.LeadAPI_Tests"/>
+         
+        </classes>
+    </test>
+    
+    <test name="Create Campaign API Test">
+        <classes>
+<!--             Fully qualified class name of your API test -->
+            <class name="api_tests.Campaign_APITests"/>
+        </classes>
+    </test>
 
 
-	<test name="Create Lead API Test">
-		<classes>
-			<!-- Fully qualified class name of your API test -->
-			<class name="api_tests.LeadAPITests_WithTestUtils" />
 
-		</classes>
-	</test>
+ <test name="Create Contact API Test">
+        <classes>
+            <!-- Fully qualified class name of your API test -->
+            <class name="api_tests.Contact_APITest"/>
+        </classes>
+    </test>
 
-	<test name="Create Campaign API Test">
-		<classes>
-			<!-- Fully qualified class name of your API test -->
-			<class name="api_tests.Campaign_APITests" />
-		</classes>
-	</test>
+<test name="Create Opportunity API Test">
+        <classes>
+            <!-- Fully qualified class name of your API test -->
+            <class name="api_tests.Opportunity_APITests"/>
+        </classes>
+    </test>
+    
+<test name="Create_User API Test">
+        <classes>
+<!--             Fully qualified class name of your API test -->
+           <class name="api_tests.R_User"/>
+         
+        </classes>
+    </test>
+    
+    
+ <test name="CreateUser API Test">
+        <classes>
+<!--             Fully qualified class name of your API test -->
+           <class name="api_tests.CreateUserTest"/>
+         
+        </classes>
+    </test>   
 
-
-
-	<test name="Create Contact API Test">
-		<classes>
-			<!-- Fully qualified class name of your API test -->
-			<class name="api_tests.Contact_APITest" />
-		</classes>
-	</test>
-
-	<test name="Create Opportunity API Test">
-		<classes>
-			<!-- Fully qualified class name of your API test -->
-			<class name="api_tests.Opportunity_APITests" />
-		</classes>
-	</test>
-
-	<test name="Create_User API Test">
-		<classes>
-			<!-- Fully qualified class name of your API test -->
-			<class name="api_tests.R_User" />
-
-		</classes>
-	</test>
 
 </suite>
