@@ -24,12 +24,12 @@ public class R_User extends api_BaseTest {
                 "  \"department\": \"Test4\",\n" +
                 "  \"designation\": \"QA3\",\n" +
                 "  \"dob\": \"07/24/2003\",\n" +
-                "  \"email\": \"sk6@gmail.com\",\n" +
+                "  \"email\": \"sk64@gmail.com\",\n" +
                 "  \"empName\": \"SrK\",\n" +
                 "  \"experience\": 1,\n" +
-                "  \"mobileNo\": \"1934567897\",\n" +
+                "  \"mobileNo\": \"1934567097\",\n" +
                 "  \"role\": \"IT\",\n" +
-                "  \"username\": \"Ramen\",\n" +
+                "  \"username\": \"Ramen123\",\n" +
                 "  \"password\": \"123478\"\n" +
                 "}";
 
