@@ -6,6 +6,8 @@ import java.io.IOException;
 
 import org.testng.annotations.Test;
 
+import com.fasterxml.jackson.core.exc.StreamReadException;
+import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import api_POJOS.CreateContactClassic_POJO;
@@ -16,8 +18,8 @@ import io.restassured.response.Response;
 public class Contact_APITest extends api_BaseTest {
 	
 	  // Create Contact - Mandatory Fields
-	@Test(priority = 1,enabled=false)//Test is working
-	public void createContactWithMandatoryFields() throws IOException {
+/*	@Test(priority = 1,enabled=false)//Test is working
+	public void createContactWithMandatoryFieldsTC_008() throws IOException {
 	    test.set(extent.createTest("Verify Contact Creation with Mandatory Fields"));
 
 	    String campaignId = prop.getProperty("campaignId");
@@ -29,7 +31,7 @@ public class Contact_APITest extends api_BaseTest {
 	            CreateContactClassic_POJO.class
 	    );
 
-	    // POST request and capture response in createdLead
+	    // POST request and capture response in createdContact
 	    CreateContactClassic_POJO createdContactPayLoad = 
 	    	given()
 	            .queryParam("campaignId", campaignId)
@@ -57,7 +59,7 @@ public class Contact_APITest extends api_BaseTest {
 	
 	 // Create Contact - All Fields
 	@Test(priority = 2,enabled=true)//Test is working
-	public void createContactWithAllFields() throws IOException {
+	public void createContactWithAllFieldsTC_001() throws IOException {
 	    test.set(extent.createTest("Create Contact - All Fields"));
 
 	    String campaignId = prop.getProperty("campaignId");
@@ -98,7 +100,7 @@ public class Contact_APITest extends api_BaseTest {
 	// Update Contact
 	// -------------------------------
 	@Test(priority = 3,enabled=true)
-	public void updateContact() throws IOException {
+	public void updateContactTC_0010() throws IOException {
 	    test.set(extent.createTest("Update Contact Test"));
 
 	    ObjectMapper mapper = new ObjectMapper();
@@ -162,7 +164,7 @@ public class Contact_APITest extends api_BaseTest {
 	// Delete Contact
 		
 		@Test(priority = 4,enabled=true)//Test is working
-		public void deleteLead() throws IOException {
+		public void deleteContactTC_028() throws IOException {
 		    test.set(extent.createTest("Delete Contact Test"));
 
 		    ObjectMapper mapper = new ObjectMapper();
@@ -201,7 +203,7 @@ public class Contact_APITest extends api_BaseTest {
 	
 	//
 	@Test(priority = 5, enabled = true)//tets working
-	public void getAllContactsPaginated() {
+	public void getAllContactsPaginatedTC_037() {
 	    test.set(extent.createTest("Get All Contacts"));
 
 	    Response response = 
@@ -221,7 +223,7 @@ public class Contact_APITest extends api_BaseTest {
 	}
 
 	@Test(priority = 6, enabled = true)//test working
-	public void getAllContacts() {
+	public void getAllContactsTC_034() {
 	    test.set(extent.createTest("Get All Contacts - Paginated"));
 
 	    Response response = 
@@ -240,7 +242,7 @@ public class Contact_APITest extends api_BaseTest {
 
 	
 	@Test(priority = 7,enabled=true)//test working
-	public void getContactCount() {
+	public void getContactCountTC_039() {
 	    test.set(extent.createTest("Get Contact Count"));
 
 	    int contactCount = 
@@ -257,6 +259,44 @@ public class Contact_APITest extends api_BaseTest {
 	    assert contactCount >= 0 : "Contact count should be 0 or more";
 
 	    test.get().pass("Contact count retrieved successfully: " + contactCount);
+	}
+	*/
+	@Test(priority=1,enabled=true)
+	public void missingRequiredQueryParametercampaignIdTC_002() throws StreamReadException, DatabindException, IOException{
+		
+		 test.set(extent.createTest("Missing Required Query Parameter campaignId"));
+
+		   // String campaignId = prop.getProperty("campaignId");
+
+		    // Load mandatory payload from JSON
+		    ObjectMapper mapper = new ObjectMapper();
+		    CreateContactClassic_POJO contactPayload = mapper.readValue(
+		            getClass().getClassLoader().getResourceAsStream("api_testData/contactMandatoryPayload.json"),
+		            CreateContactClassic_POJO.class
+		    );
+
+		    // POST request and capture response in createdContact
+		    CreateContactClassic_POJO createdContactPayLoad = 
+		    	given()
+		          //  .queryParam("campaignId", campaignId)
+		            .body(contactPayload, ObjectMapperType.JACKSON_2)
+		        .when()
+		            .post("/contact")
+		        .then()
+		            .log().all()
+		            .statusCode(500)
+		            .extract()
+		            .as(CreateContactClassic_POJO.class, ObjectMapperType.JACKSON_2);
+		    
+		    //comparing  contactPayload is the request object and createdContactPayLoad is the response object
+		 
+		    
+
+		    test.get().pass("Missing Required Query Parameter campaignId");
+
+		
+		
+		
 	}
 	
 
