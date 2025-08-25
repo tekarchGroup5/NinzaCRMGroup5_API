@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.annotations.Test;
 
@@ -34,16 +35,24 @@ public class Opportunity_APITests extends api_BaseTest {
 		// Load mandatory Payload From Json
 		ObjectMapper mapper = new ObjectMapper();
 		OpportunitiesPojo oppPayload = mapper.readValue(
-				getClass().getClassLoader().getResourceAsStream("api_testData/OppTestData.json"),
+				getClass().getClassLoader().getResourceAsStream("api_testData/OppMandatoyTestData.json"),
 				OpportunitiesPojo.class);
 
 //		System.out.println(new ObjectMapper().writeValueAsString(oppPayload));
 
 		// Post request
 
-		OpportunitiesPojo createdOppPayload = given().queryParam("leadId", leadId)
-				.body(oppPayload, ObjectMapperType.JACKSON_2).contentType(ContentType.JSON).when().post("/opportunity")
-				.then().statusCode(201).extract().as(OpportunitiesPojo.class, ObjectMapperType.JACKSON_2);
+		OpportunitiesPojo createdOppPayload = 
+				given()
+					.queryParam("leadId", leadId)
+					.body(oppPayload, ObjectMapperType.JACKSON_2)
+					.contentType(ContentType.JSON)
+				.when()
+					.post("/opportunity")
+				.then()
+					.statusCode(201)
+					.extract()
+					.as(OpportunitiesPojo.class, ObjectMapperType.JACKSON_2);
 
 		context.setAttribute("OpportunityId", createdOppPayload.getOpportunityId());
 
@@ -59,7 +68,7 @@ public class Opportunity_APITests extends api_BaseTest {
 
 	}
 
-	@Test(priority = 2, enabled = false, dependsOnMethods = "createOpportunity")
+	@Test(priority = 2, enabled = true, dependsOnMethods = "createOpportunity")
 	public void updateOpportunityWithMandatoryFields(ITestContext context)
 			throws StreamReadException, DatabindException, IOException {
 		test.set(extent.createTest("Update Opportunity with Mandatory Fields"));
@@ -70,7 +79,7 @@ public class Opportunity_APITests extends api_BaseTest {
 		// This code reads JSON test data from the classpath file and converts it into a
 		// POJO that you can directly use in your API request body.
 		OpportunitiesPojo oppPayload = mapper.readValue(
-				getClass().getClassLoader().getResourceAsStream("api_testData/OppTestData.json"),
+				getClass().getClassLoader().getResourceAsStream("api_testData/OppMandatoyTestData.json"),
 				OpportunitiesPojo.class);
 
 		String createdOppId = (String) context.getAttribute("opportunityId");
@@ -101,12 +110,12 @@ public class Opportunity_APITests extends api_BaseTest {
 	}
 
 	// Helper Test to get the OpportunityId after creation
-	@Test(priority = 1, enabled = false)
+	@Test(priority = 1, enabled = true)
 	public void createOpportunity(ITestContext context) throws StreamReadException, DatabindException, IOException {
 		String leadId = prop.getProperty("leadId");
 		ObjectMapper mapper = new ObjectMapper();
 		OpportunitiesPojo oppPayload = mapper.readValue(
-				getClass().getClassLoader().getResourceAsStream("api_testData/OppTestData.json"),
+				getClass().getClassLoader().getResourceAsStream("api_testData/OppMandatoyTestData.json"),
 				OpportunitiesPojo.class);
 		oppId = given().queryParam("leadId", leadId).body(oppPayload, ObjectMapperType.JACKSON_2).when()
 				.post("/opportunity").then().statusCode(201).extract().path("opportunityId");// capture the created
@@ -124,18 +133,7 @@ public class Opportunity_APITests extends api_BaseTest {
 		test.get().pass("Opportunity deleted successfully and verified");
 	}
 
-//	
-////	@Test(priority = 5, enabled = true)
-////	public void createOpportunityWithAllTheFields() {
-////		test.set(extent.createTest("verify opportunity is created with all the fields"));
-////		
-////		String leadId = prop.getProperty("leadId");
-////		ObjectMapper mapper = new ObjectMapper();
-////		mapper.readValue()
-////		
-////	}
-////	
-	@Test(priority = 5, enabled = false)
+	@Test(priority = 5, enabled = true)
 	public void getAllTheOpportunity() {
 		test.set(extent.createTest("Get All Opportunities"));
 		Response response = given().queryParam("page", 0).queryParam("size", 10).when().get("/opportunity/all").then()
@@ -149,7 +147,7 @@ public class Opportunity_APITests extends api_BaseTest {
 
 	}
 
-	@Test(priority = 6, enabled = false)
+	@Test(priority = 6, enabled = true)
 	public void getAllOpportunityNonPaginated() {
 		test.set(extent.createTest("verify get all opportunity non pageable api"));
 
@@ -168,5 +166,102 @@ public class Opportunity_APITests extends api_BaseTest {
 
 		test.get().pass("opportunity count retrived successfully:" + opportunityCount);
 	}
+	
+	@Test(priority = 8, enabled = true)
+	public void createOpportunityWithAllTheFields(ITestContext context)
+			throws StreamReadException, DatabindException, IOException {
+		test.set(extent.createTest("verify opportunity is created with all the fields"));
 
+		String leadId = prop.getProperty("leadId");
+		ObjectMapper mapper = new ObjectMapper();
+		OpportunitiesPojo oppPayload = mapper.readValue(
+				getClass().getClassLoader().getResourceAsStream("api_testData/OppAllFieldsTestData.json"),
+				OpportunitiesPojo.class);
+
+		// post request
+
+		OpportunitiesPojo createdOppPayload = given().queryParam("leadId", leadId).body(oppPayload)
+				.contentType(ContentType.JSON).when().post("/opportunity").then().statusCode(201)
+				.body("opportunityId", not(equalTo(null))).extract().as(OpportunitiesPojo.class);
+
+		context.setAttribute("opportunityId", createdOppPayload.getOpportunityId());
+
+		assert createdOppPayload.getAmount().equals(oppPayload.getAmount()) : "Amount is not matching";
+		assert createdOppPayload.getAssignedTo().equals(oppPayload.getAssignedTo()) : "AssignedTo is not matching";
+		assert createdOppPayload.getBusinessType().equals(oppPayload.getBusinessType())
+				: "Business Type is not matching";
+		assert createdOppPayload.getExpectedCloseDate().equals(oppPayload.getExpectedCloseDate())
+				: "Expected Close Date is not matching";
+		assert createdOppPayload.getNextStep().equals(oppPayload.getNextStep()) : "Next Step is not matching";
+		assert createdOppPayload.getOpportunityName().equals(oppPayload.getOpportunityName())
+				: "Opportunity Name is not matching";
+		assert createdOppPayload.getProbability().equals(oppPayload.getProbability()) : "Probability is not matching";
+		assert createdOppPayload.getSalesStage().equals(oppPayload.getSalesStage()) : "Sales Stage is not matching";
+
+	}
+
+	@Test(priority = 9, enabled = true, dependsOnMethods = "createOpportunityWithAllTheFields")
+	public void updateCreatedOpportunityWithAllTheFields(ITestContext context)
+			throws StreamReadException, DatabindException, IOException {
+		test.set(extent.createTest("verify that the created Opportunity with all the fields should be updated"));
+
+		ObjectMapper mapper = new ObjectMapper();
+		OpportunitiesPojo oppPayload = mapper.readValue(
+				getClass().getClassLoader().getResourceAsStream("api_testData/OppAllFieldsTestData.json"),
+				OpportunitiesPojo.class);
+
+		String oppId = (String) context.getAttribute("opportunityId");
+		String leadId = prop.getProperty("leadId");
+
+		// update fields
+		oppPayload.setAmount("9000");
+		oppPayload.setExpectedCloseDate("2025-08-30");
+		oppPayload.setNextStep("create Invoice");
+		// put request
+
+		OpportunitiesPojo updatedPayload = given().queryParam("opportunityId", oppId).queryParam("leadId", leadId)
+				.body(oppPayload).contentType(ContentType.JSON).when().put("/opportunity").then().statusCode(200)
+				.body("amount", equalTo("9000")).body("expectedCloseDate", equalTo("2025-08-30"))
+				.body("nextStep", equalTo("create Invoice")).extract().as(OpportunitiesPojo.class);
+
+//		assert updatedPayload.getAmount().contentEquals("9000");
+//		assert updatedPayload.getExpectedCloseDate().contentEquals("2025-08-30");
+//		assert updatedPayload.getNextStep().contentEquals("create Invoice");
+		test.get().pass("created Opportunity with all field is updated and asserted succesfully");
+	}
+
+	@Test(priority = 10, enabled = true, dependsOnMethods = "createOpportunityWithAllTheFields")
+	public void deleteCreatedOpportunityWithAllTheFields(ITestContext context) {
+		test.set(extent.createTest("Verify created Opportunity with all fields is deleted successfuly"));
+		String createdOpp = (String) context.getAttribute("opportunityId");
+		System.out.println(createdOpp);
+		given().queryParam("opportunityId", createdOpp).when().delete("/opportunity").then().statusCode(204);
+
+		test.get().pass("Opportunity deleted successfully and verified");
+	}
+
+	@Test(priority = 11, enabled = true)
+	public void createOpportunityWithMissingLead() throws StreamReadException, DatabindException, IOException {
+		test.set(extent.createTest("verify opportunity is created without lead"));
+
+		ObjectMapper mapper = new ObjectMapper();
+		OpportunitiesPojo oppPayload = mapper.readValue(
+				getClass().getClassLoader().getResourceAsStream("api_testData/OppAllFieldsTestData.json"),
+				OpportunitiesPojo.class);
+
+		// post request
+
+		Response Response = given().body(oppPayload).contentType(ContentType.JSON).when().post("/opportunity").then()
+				.statusCode(anyOf(is(400), is(422), is(500))).body("message", containsString("leadId")).extract()
+				.response();
+
+		// validate opportunity is not ccreated
+		Response allOppResponse = given().when().get("/opportunity/all").then().statusCode(200).extract().response();
+
+		List<String> names = allOppResponse.jsonPath().getList("content.opportunityName");
+		Assert.assertFalse(names.contains("string"), "Opportunity created even when leadId is missing");
+
+		test.get().pass("Opportunity created without lead test is succesfull ");
+
+	}
 }

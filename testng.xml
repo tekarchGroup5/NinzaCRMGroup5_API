@@ -9,7 +9,7 @@
 
 	<test name="Create Lead API Test">
 		<classes>
-			<!-- Fully qualified class name of your API test -->
+<!--			 Fully qualified class name of your API test -->
 			<class name="api_tests.LeadAPITests_WithTestUtils" />
 
 		</classes>
@@ -17,7 +17,7 @@
 
 	<test name="Create Campaign API Test">
 		<classes>
-			<!-- Fully qualified class name of your API test -->
+<!--			 Fully qualified class name of your API test -->
 			<class name="api_tests.Campaign_APITests" />
 		</classes>
 	</test>
@@ -26,21 +26,21 @@
 
 	<test name="Create Contact API Test">
 		<classes>
-			<!-- Fully qualified class name of your API test -->
+<!--			 Fully qualified class name of your API test -->
 			<class name="api_tests.Contact_APITest" />
 		</classes>
 	</test>
 
 	<test name="Create Opportunity API Test">
 		<classes>
-			<!-- Fully qualified class name of your API test -->
+<!--			 Fully qualified class name of your API test -->
 			<class name="api_tests.Opportunity_APITests" />
 		</classes>
 	</test>
 
 	<test name="Create_User API Test">
 		<classes>
-			<!-- Fully qualified class name of your API test -->
+<!--			 Fully qualified class name of your API test -->
 			<class name="api_tests.R_User" />
 
 		</classes>
