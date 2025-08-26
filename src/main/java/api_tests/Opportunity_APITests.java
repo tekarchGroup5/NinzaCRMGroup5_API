@@ -16,6 +16,7 @@ import api_POJOS.OpportunitiesPojo;
 import static io.restassured.RestAssured.*;
 import io.restassured.mapper.ObjectMapperType;
 import io.restassured.response.Response;
+import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import static org.hamcrest.Matchers.*;
 
@@ -235,6 +236,7 @@ public class Opportunity_APITests extends api_BaseTest {
 		test.set(extent.createTest("Verify created Opportunity with all fields is deleted successfuly"));
 		String createdOpp = (String) context.getAttribute("opportunityId");
 		System.out.println(createdOpp);
+		RestAssured.responseSpecification  = null;
 		given().queryParam("opportunityId", createdOpp).when().delete("/opportunity").then().statusCode(204);
 
 		test.get().pass("Opportunity deleted successfully and verified");
