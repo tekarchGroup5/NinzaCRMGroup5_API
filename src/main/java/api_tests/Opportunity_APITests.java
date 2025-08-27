@@ -13,11 +13,17 @@ import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import api_POJOS.OpportunitiesPojo;
+import constants.FileConstants;
+
 import static io.restassured.RestAssured.*;
 import io.restassured.mapper.ObjectMapperType;
 import io.restassured.response.Response;
+import randomDataGenerator.CreateOpportunityRandomTestData;
+import utils.RestUtils;
+import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import static org.hamcrest.Matchers.*;
+import static org.testng.Assert.assertTrue;
 
 public class Opportunity_APITests extends api_BaseTest {
 	private static String oppId;
@@ -235,6 +241,7 @@ public class Opportunity_APITests extends api_BaseTest {
 		test.set(extent.createTest("Verify created Opportunity with all fields is deleted successfuly"));
 		String createdOpp = (String) context.getAttribute("opportunityId");
 		System.out.println(createdOpp);
+		RestAssured.responseSpecification  = null;
 		given().queryParam("opportunityId", createdOpp).when().delete("/opportunity").then().statusCode(204);
 
 		test.get().pass("Opportunity deleted successfully and verified");
@@ -263,5 +270,64 @@ public class Opportunity_APITests extends api_BaseTest {
 
 		test.get().pass("Opportunity created without lead test is succesfull ");
 
+	}
+	@Test(priority=12)
+	public void createOpportunityWithMandatoryUsingUtilityClasses() throws StreamReadException, DatabindException, IOException {
+		test.set(extent.createTest("Verify opportunity is created using Utility classes"));
+		
+		ObjectMapper mapper = new ObjectMapper();
+		OpportunitiesPojo oppPayload = mapper.readValue(getClass().getClassLoader().getResourceAsStream("api_testData/OppAllFieldsTestData.json"), OpportunitiesPojo.class);
+	
+		HashMap<String,String> headers = new HashMap<>();
+		headers.put("Content-Type", "application/json");
+		
+		String coEndpoint = "/opportunity";
+		String goEndpoint = "/opportunity/all";
+		HashMap<String,String> queryParam = new HashMap<>();
+		queryParam.put("leadId",prop.getProperty("leadId"));
+		
+		//post request
+		
+		Response createdOpportunityResponse = RestUtils.postReqWithQuery(headers, oppPayload, coEndpoint, queryParam,201);
+		
+		String resOpportunityId = createdOpportunityResponse.jsonPath().getString("opportunityId");
+		
+//		System.out.println("Response Body :" + createdOpportunityResponse.getBody().asPrettyString());
+		RestUtils.validateSchema(createdOpportunityResponse,FileConstants.CREATE_OPPORTUNITY_SCHEMA_PATH);
+		
+		Response getOppResponse = RestUtils.getReq(headers,goEndpoint);
+//		System.out.println("Get Response Body :" + getOppResponse.getBody().asPrettyString() );
+		List<Object> getAllOpp = getOppResponse.jsonPath().getList("content.opportunityId");
+		
+		assertTrue(getAllOpp.contains(resOpportunityId), "New opportunity with OpportunityId " + resOpportunityId + "is not created");
+	}
+	@Test(priority=13)
+	public void createOpportunityWithMandatoryUsingRandomTestDataGeneratorUtilityClass() throws StreamReadException, DatabindException, IOException {
+		test.set(extent.createTest("Verify opportunity is created using RandomTestDataGeneratorUtilityClass"));
+		
+		ObjectMapper mapper = new ObjectMapper();
+		OpportunitiesPojo oppPayload = CreateOpportunityRandomTestData.generateRandomOpportunity();
+	
+		HashMap<String,String> headers = new HashMap<>();
+		headers.put("Content-Type", "application/json");
+		
+		String coEndpoint = "/opportunity";
+		String goEndpoint = "/opportunity/all";
+		HashMap<String,String> queryParam = new HashMap<>();
+		queryParam.put("leadId",prop.getProperty("leadId"));
+		
+		//post request
+		
+		Response createdOpportunityResponse = RestUtils.postReqWithQuery(headers, oppPayload, coEndpoint, queryParam,201);
+		
+		String resOpportunityId = createdOpportunityResponse.jsonPath().getString("opportunityId");
+		System.out.println("Response Body :" + createdOpportunityResponse.getBody().asPrettyString());
+		RestUtils.validateSchema(createdOpportunityResponse,FileConstants.CREATE_OPPORTUNITY_SCHEMA_PATH);
+		
+		Response getOppResponse = RestUtils.getReq(headers,goEndpoint);
+		System.out.println("Get Response Body :" + getOppResponse.getBody().asPrettyString() );
+		List<Object> getAllOpp = getOppResponse.jsonPath().getList("content.opportunityId");
+		
+		assertTrue(getAllOpp.contains(resOpportunityId), "New opportunity with OpportunityId " + resOpportunityId + "is not created");
 	}
 }

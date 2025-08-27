@@ -11,7 +11,9 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 
+import api_POJOS.OpportunitiesPojo;
 import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
 public class RestUtils {
@@ -22,8 +24,9 @@ public class RestUtils {
 		return loginResponse;
 	}
 	
-	public static Response postReqWithQuery(HashMap<String, String> headers, Object payload, String path, HashMap<String, String> queryParams, int expectedStatus) {
+	public static Response postReqWithQuery(HashMap<String, String> headers, Object payload, String path, HashMap<String, String> queryParams,int expectedStatus) {
 	    Response response = RestAssured.given()
+	    		.contentType(ContentType.JSON)
 	            .headers(headers)
 	            .queryParams(queryParams)   // add query params here
 	            .body(payload)              // attach your payload
@@ -155,5 +158,7 @@ public class RestUtils {
 		System.out.println(sJasonPayload);
 		return sJasonPayload;
 	}
+
+	
 	
 }

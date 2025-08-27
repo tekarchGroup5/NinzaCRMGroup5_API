@@ -33,5 +33,7 @@ public class FileConstants {
 	public static final String GetUser_Schema_PATH = ROOT_PATH + "/src/main/java/schemaValidations/GetUser_Schema.json";
 	public static final String GetUser_Count_Schema_PATH = ROOT_PATH + "/src/main/java/schemaValidations/GetUser_Count_Schema.json";
 	public static final String GetUser_Pagination_Schema_PATH = ROOT_PATH + "/src/main/java/schemaValidations/GetUser_Pagination_Schema.json";
+	public static final String CREATE_OPPORTUNITY_SCHEMA_PATH = ROOT_PATH + "/src/main/java/schemaValidations/opportunityResponseSchema.json";	
 	public static final String R_CreateUserSchema_PATH = ROOT_PATH + "/src/main/java/schemaValidations/R_CreateUserSchema.json";		
+
 }
