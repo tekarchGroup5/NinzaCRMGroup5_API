@@ -1,6 +1,8 @@
 package api_POJOS;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -28,6 +30,28 @@ public class OpportunitiesPojo {
 	private String probability;
 	private String salesStage;
 	private Campaign_POJO campaign;
+	
+	public OpportunitiesPojo(){
+		
+	}
+	
+	@JsonCreator
+	public OpportunitiesPojo(@JsonProperty("amount")String amount,@JsonProperty("assignedTo") String assignedTo, @JsonProperty("businessType")String businessType,@JsonProperty("description") String description,
+			@JsonProperty("expectedCloseDate")String expectedCloseDate,@JsonProperty("lead") LeadPayload lead,@JsonProperty("nextStep") String nextStep,@JsonProperty("opportunityId") String opportunityId,@JsonProperty("opportunityName") String opportunityName,
+			@JsonProperty("probability")String probability, @JsonProperty("salesStage")String salesStage,@JsonProperty("campaign") Campaign_POJO campaign) {
+		this.amount = amount;
+		this.assignedTo = assignedTo;
+		this.businessType = businessType;
+		this.description = description;
+		this.expectedCloseDate = expectedCloseDate;
+		this.lead = lead;
+		this.nextStep = nextStep;
+		this.opportunityId = opportunityId;
+		this.opportunityName = opportunityName;
+		this.probability = probability;
+		this.salesStage = salesStage;
+		this.campaign = campaign;
+	}
 
 	public String getAmount() {
 		return amount;
