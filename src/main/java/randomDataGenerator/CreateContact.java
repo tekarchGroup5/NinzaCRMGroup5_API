@@ -25,7 +25,7 @@ public class CreateContact {
         campaign.setCampaignStatus(faker.options().option("ongoing", "completed", "planned"));
         campaign.setTargetSize(faker.number().numberBetween(10, 500));
         contact.setCampaign(campaign);
-		return contact;
+	return contact;
 		
 	}
 	public static CreateContactClassic_POJO generateMandtoryContact() {

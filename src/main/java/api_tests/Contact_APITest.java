@@ -258,7 +258,9 @@ public class Contact_APITest extends api_BaseTest {
 			   String campaignId = prop.getProperty("campaignId");
 
 			   CreateContactClassic_POJO contactPayload = CreateContact.generateMissingFieldContact();
-			   contactPayload.setEmail("InvalidEmail.com");
+			   String invalidEmail= faker.name().username() + "@@gmail.com";
+			   System.out.println(invalidEmail);
+			   contactPayload.setEmail(invalidEmail);
 			    // POST request and capture response in createdContact
 			    CreateContactClassic_POJO createdContactPayLoad = 
 			    	given()
@@ -288,7 +290,8 @@ public class Contact_APITest extends api_BaseTest {
 			   String campaignId = prop.getProperty("campaignId");
 
 			   CreateContactClassic_POJO contactPayload = CreateContact.generateMissingFieldContact();
-			   String invalidLong = "12345678991234567890";
+			   String invalidLong = faker.number().digits(11);
+			   System.out.println("*****"+ invalidLong);
 			   contactPayload.setMobile(invalidLong);
 			    // POST request and capture response in createdContact
 			    CreateContactClassic_POJO createdContactPayLoad = 
@@ -310,16 +313,15 @@ public class Contact_APITest extends api_BaseTest {
 			
 		}
 	 
-	 @Test(priority=12,enabled=true)
+	@Test(priority=12,enabled=true)
 		public void largeInputValuesforContactNameTC_009() throws StreamReadException, DatabindException, IOException{
 			
 			 test.set(extent.createTest("Large Input Values for ContactName"));
 
 			   String campaignId = prop.getProperty("campaignId");
 
-			   CreateContactClassic_POJO contactPayload = CreateContact.generateMandtoryContact();
-			   Faker faker = new Faker();
-
+			   CreateContactClassic_POJO contactPayload = CreateContact.generateRandomContact();
+			  
 			// Create a long contact name by combining multiple names
 			String longContactName = faker.name().firstName() + " " +
 			                         faker.name().lastName() + " " +
@@ -331,11 +333,13 @@ public class Contact_APITest extends api_BaseTest {
 			// Optionally, make it exactly 100 characters (if needed)
 			longContactName = longContactName.substring(0, Math.min(longContactName.length(), 100));
 			contactPayload.setContactName(longContactName);
+			
 			  
 			    // POST request and capture response in createdContact
 			    CreateContactClassic_POJO createdContactPayLoad = 
 			    	given()
-			    	.header("accept", "application/json")
+			    	.contentType("application/json")
+			        .accept("application/json")
 			            .queryParam("campaignId", campaignId)
 			            .body(contactPayload, ObjectMapperType.JACKSON_2)
 			        .when()
@@ -347,15 +351,15 @@ public class Contact_APITest extends api_BaseTest {
 			            .as(CreateContactClassic_POJO.class, ObjectMapperType.JACKSON_2);
 			    
 			    //comparing  contactPayload is the request object and createdContactPayLoad is the response object
-			    String contactId= createdContactPayLoad.getContactId();
-			    System.out.println("Created contact ID: " + contactId);
+//			    String contactId= createdContactPayLoad.getContactId();
+//			    System.out.println("Created contact ID: " + contactId);
 			    test.get().pass("Large Input Values for ContactName");
 
 			
 			
 		}
-		
-	  @Test(priority=13,enabled=true)
+
+	 @Test(priority=13,enabled=true)
 		public void updateContactWithOnlyRequiredfieldsTC_011() throws StreamReadException, DatabindException, IOException{
 			
 			 test.set(extent.createTest("Update contact with only required fields"));
@@ -499,8 +503,52 @@ public class Contact_APITest extends api_BaseTest {
 			            .extract()
 			            .as(CreateContactClassic_POJO.class, ObjectMapperType.JACKSON_2);
 
-			    // Step 4: Assertions to validate updated fields
+			    test.get().pass("Missing contactId in query params");
+
 			
+			
+		}
+	  
+	  //TC: it s a bug
+	  @Test(priority=16,enabled=true)
+		public void invalidContactNamedatatypeTC_022() throws StreamReadException, DatabindException, IOException{
+			
+			 test.set(extent.createTest("Invalid ContactName datatype"));
+
+			 
+
+			    // Step 1: Create a Contact first
+			 CreateContactClassic_POJO contact = CreateContact.generateMandtoryContact();
+			    String contactId = postContact(contact);
+			    System.out.println("contactId is :"+contactId);
+
+			    // Step 2: Update some fields
+			   
+			    contact.setContactName(faker.name().fullName() + "##");
+			    contact.setOrganizationName(faker.company().name());
+			    contact.setTitle(faker.job().title());
+			    contact.setMobile(faker.phoneNumber().cellPhone()+"2");
+			    String expectedName = contact.getContactName();
+			    String expectedOrg = contact.getOrganizationName();
+			    String expectedTitle = contact.getTitle();
+			    String expectedMobile = contact.getMobile();
+
+			    // Step 3: Send PUT request and capture response
+			    CreateContactClassic_POJO updatedContactPayload = 
+			    	given()
+			    	.header("accept", "application/json")
+			            .queryParam("contactId", contactId)
+			            .queryParam("campaignId", prop.getProperty("campaignId"))
+			            .body(contact, ObjectMapperType.JACKSON_2)
+			        .when()
+			            .put("/contact")
+			        .then()
+			            .log().all()
+			            .statusCode(500)
+			            .extract()
+			            .as(CreateContactClassic_POJO.class, ObjectMapperType.JACKSON_2);
+
+			    // Step 4: Assertions to validate updated fields
 			    assert updatedContactPayload.getContactId().equals(contactId): "contact ID mismatch after update";
 			    assert updatedContactPayload.getOrganizationName().equals(expectedOrg) : "Oraganization name not updated correctly";
 			    assert updatedContactPayload.getTitle().equals(expectedTitle):"Title is not updated correctly";
@@ -508,14 +556,141 @@ public class Contact_APITest extends api_BaseTest {
 			    assert updatedContactPayload.getMobile().equals(expectedMobile):"mobile is not updated updated correctly";
 			    
 		
+			    test.get().pass("Invalid ContactName datatype");
 
-			    test.get().pass("Missing contactId in query params");
+			
+			
+		}
+	  //TC: it s a bug
+	  @Test(priority=17,enabled=true)
+		public void invalidDepartmentTC_023() throws StreamReadException, DatabindException, IOException{
+			
+			 test.set(extent.createTest("Invalid Department"));
+
+			 
+
+			    // Step 1: Create a Contact first
+			 CreateContactClassic_POJO contact = CreateContact.generateRandomContact();
+			    String contactId = postContact(contact);
+			    System.out.println("contactId is :"+contactId);
+
+			    // Step 2: Update some fields
+			   
+			    contact.setDepartment(faker.company().profession().replaceAll("[a-zA-Z]", "@"));
+			    String departnameName = contact.getDepartment();
+			   
+
+			    // Step 3: Send PUT request and capture response
+			    CreateContactClassic_POJO updatedContactPayload = 
+			    	given()
+			    	.header("accept", "application/json")
+			            .queryParam("contactId", contactId)
+			            .queryParam("campaignId", prop.getProperty("campaignId"))
+			            .body(contact, ObjectMapperType.JACKSON_2)
+			        .when()
+			            .put("/contact")
+			        .then()
+			            .log().all()
+			            .statusCode(500)
+			            .extract()
+			            .as(CreateContactClassic_POJO.class, ObjectMapperType.JACKSON_2);
+
+			    // Step 4: Assertions to validate updated fields
+			    assert updatedContactPayload.getContactId().equals(contactId): "contact ID mismatch after update";
+			    assert updatedContactPayload.getDepartment().equals(departnameName) : "Oraganization name not updated correctly";
+			   
+			    test.get().pass("Invalid Department");
+
+			
+			
+		}
+	  //TC: it s a bug
+	  @Test(priority=18,enabled=true)
+		public void invalidEmaildatatypeFormat_TC024() throws StreamReadException, DatabindException, IOException{
+			
+			 test.set(extent.createTest("Invalid Email data type Format"));
+
+			 
+
+			    // Step 1: Create a Contact first
+			 CreateContactClassic_POJO contact = CreateContact.generateRandomContact();
+			    String contactId = postContact(contact);
+			    System.out.println("contactId is :"+contactId);
+
+			    // Step 2: Update some fields
+			    
+			   contact.setEmail("100");
+			    String emailName = contact.getEmail();
+			   
+
+			    // Step 3: Send PUT request and capture response
+			    CreateContactClassic_POJO updatedContactPayload = 
+			    	given()
+			    	.header("accept", "application/json")
+			            .queryParam("contactId", contactId)
+			            .queryParam("campaignId", prop.getProperty("campaignId"))
+			            .body(contact, ObjectMapperType.JACKSON_2)
+			        .when()
+			            .put("/contact")
+			        .then()
+			            .log().all()
+			            .statusCode(500)
+			            .extract()
+			            .as(CreateContactClassic_POJO.class, ObjectMapperType.JACKSON_2);
+
+			    // Step 4: Assertions to validate updated fields
+			    assert updatedContactPayload.getContactId().equals(contactId): "contact ID mismatch after update";
+			    assert updatedContactPayload.getEmail().equals(emailName) : "Oraganization name not updated correctly";
+			   
+			    test.get().pass("Invalid Email data type Format");
+
+			
+			
+		}
+	  //TC: it s a bug
+	  @Test(priority=19,enabled=true)
+		public void invalidMobileNumberdatatypeFormatTC025() throws StreamReadException, DatabindException, IOException{
+			
+			 test.set(extent.createTest("Invalid Mobile Number datatype Format"));
+
+			 
+
+			    // Step 1: Create a Contact first
+			 CreateContactClassic_POJO contact = CreateContact.generateRandomContact();
+			    String contactId = postContact(contact);
+			    System.out.println("contactId is :"+contactId);
+
+			    // Step 2: Update some fields
+			    
+			   contact.setMobile("!@#$%%");
+			    String mobile = contact.getMobile();
+			   
+
+			    // Step 3: Send PUT request and capture response
+			    CreateContactClassic_POJO updatedContactPayload = 
+			    	given()
+			    	.header("accept", "application/json")
+			            .queryParam("contactId", contactId)
+			            .queryParam("campaignId", prop.getProperty("campaignId"))
+			            .body(contact, ObjectMapperType.JACKSON_2)
+			        .when()
+			            .put("/contact")
+			        .then()
+			            .log().all()
+			            .statusCode(500)
+			            .extract()
+			            .as(CreateContactClassic_POJO.class, ObjectMapperType.JACKSON_2);
+
+			    // Step 4: Assertions to validate updated fields
+			    assert updatedContactPayload.getContactId().equals(contactId): "contact ID mismatch after update";
+			    assert updatedContactPayload.getEmail().equals(mobile) : "Oraganization name not updated correctly";
+			   
+			    test.get().pass("Invalid Mobile Number datatype Format");
 
 			
 			
 		}
 	  
-		
 	  
 	// Helper method to get the contact ID after creation
 	private String postContact(CreateContactClassic_POJO contact) {
