@@ -1,6 +1,12 @@
 package api_tests;
 
+import java.io.File;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,16 +23,19 @@ import constants.FileConstants;
 
 import static io.restassured.RestAssured.*;
 import io.restassured.mapper.ObjectMapperType;
+import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.Response;
 import randomDataGenerator.CreateOpportunityRandomTestData;
 import utils.RestUtils;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import static org.hamcrest.Matchers.*;
+import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class Opportunity_APITests extends api_BaseTest {
 	private static String oppId;
+	
 
 	// -------------------------------
 	// Create opportunity with Mandatory Fields
@@ -48,17 +57,9 @@ public class Opportunity_APITests extends api_BaseTest {
 
 		// Post request
 
-		OpportunitiesPojo createdOppPayload = 
-				given()
-					.queryParam("leadId", leadId)
-					.body(oppPayload, ObjectMapperType.JACKSON_2)
-					.contentType(ContentType.JSON)
-				.when()
-					.post("/opportunity")
-				.then()
-					.statusCode(201)
-					.extract()
-					.as(OpportunitiesPojo.class, ObjectMapperType.JACKSON_2);
+		OpportunitiesPojo createdOppPayload = given().queryParam("leadId", leadId)
+				.body(oppPayload, ObjectMapperType.JACKSON_2).contentType(ContentType.JSON).when().post("/opportunity")
+				.then().statusCode(201).extract().as(OpportunitiesPojo.class, ObjectMapperType.JACKSON_2);
 
 		context.setAttribute("OpportunityId", createdOppPayload.getOpportunityId());
 
@@ -172,7 +173,7 @@ public class Opportunity_APITests extends api_BaseTest {
 
 		test.get().pass("opportunity count retrived successfully:" + opportunityCount);
 	}
-	
+
 	@Test(priority = 8, enabled = true)
 	public void createOpportunityWithAllTheFields(ITestContext context)
 			throws StreamReadException, DatabindException, IOException {
@@ -241,7 +242,7 @@ public class Opportunity_APITests extends api_BaseTest {
 		test.set(extent.createTest("Verify created Opportunity with all fields is deleted successfuly"));
 		String createdOpp = (String) context.getAttribute("opportunityId");
 		System.out.println(createdOpp);
-		RestAssured.responseSpecification  = null;
+		RestAssured.responseSpecification = null;
 		given().queryParam("opportunityId", createdOpp).when().delete("/opportunity").then().statusCode(204);
 
 		test.get().pass("Opportunity deleted successfully and verified");
@@ -271,63 +272,129 @@ public class Opportunity_APITests extends api_BaseTest {
 		test.get().pass("Opportunity created without lead test is succesfull ");
 
 	}
-	@Test(priority=12)
-	public void createOpportunityWithMandatoryUsingUtilityClasses() throws StreamReadException, DatabindException, IOException {
+
+	@Test(priority = 12)
+	public void createOpportunityWithMandatoryUsingUtilityClasses()
+			throws StreamReadException, DatabindException, IOException {
 		test.set(extent.createTest("Verify opportunity is created using Utility classes"));
-		
+
 		ObjectMapper mapper = new ObjectMapper();
-		OpportunitiesPojo oppPayload = mapper.readValue(getClass().getClassLoader().getResourceAsStream("api_testData/OppAllFieldsTestData.json"), OpportunitiesPojo.class);
-	
-		HashMap<String,String> headers = new HashMap<>();
+		OpportunitiesPojo oppPayload = mapper.readValue(
+				getClass().getClassLoader().getResourceAsStream("api_testData/OppAllFieldsTestData.json"),
+				OpportunitiesPojo.class);
+
+		HashMap<String, String> headers = new HashMap<>();
 		headers.put("Content-Type", "application/json");
-		
+
 		String coEndpoint = "/opportunity";
 		String goEndpoint = "/opportunity/all";
-		HashMap<String,String> queryParam = new HashMap<>();
-		queryParam.put("leadId",prop.getProperty("leadId"));
-		
-		//post request
-		
-		Response createdOpportunityResponse = RestUtils.postReqWithQuery(headers, oppPayload, coEndpoint, queryParam,201);
-		
+		HashMap<String, String> queryParam = new HashMap<>();
+		queryParam.put("leadId", prop.getProperty("leadId"));
+
+		// post request
+
+		Response createdOpportunityResponse = RestUtils.postReqWithQuery(headers, oppPayload, coEndpoint, queryParam,
+				201);
+
 		String resOpportunityId = createdOpportunityResponse.jsonPath().getString("opportunityId");
-		
+
 //		System.out.println("Response Body :" + createdOpportunityResponse.getBody().asPrettyString());
-		RestUtils.validateSchema(createdOpportunityResponse,FileConstants.CREATE_OPPORTUNITY_SCHEMA_PATH);
-		
-		Response getOppResponse = RestUtils.getReq(headers,goEndpoint);
+		RestUtils.validateSchema(createdOpportunityResponse, FileConstants.CREATE_OPPORTUNITY_SCHEMA_PATH);
+
+		Response getOppResponse = RestUtils.getReq(headers, goEndpoint);
 //		System.out.println("Get Response Body :" + getOppResponse.getBody().asPrettyString() );
 		List<Object> getAllOpp = getOppResponse.jsonPath().getList("content.opportunityId");
-		
-		assertTrue(getAllOpp.contains(resOpportunityId), "New opportunity with OpportunityId " + resOpportunityId + "is not created");
+
+		assertTrue(getAllOpp.contains(resOpportunityId),
+				"New opportunity with OpportunityId " + resOpportunityId + "is not created");
 	}
-	@Test(priority=13)
-	public void createOpportunityWithMandatoryUsingRandomTestDataGeneratorUtilityClass() throws StreamReadException, DatabindException, IOException {
+
+	@Test(priority = 13)
+	public void createOpportunityWithMandatoryUsingRandomTestDataGeneratorUtilityClass()
+			throws StreamReadException, DatabindException, IOException {
 		test.set(extent.createTest("Verify opportunity is created using RandomTestDataGeneratorUtilityClass"));
-		
+
 		ObjectMapper mapper = new ObjectMapper();
 		OpportunitiesPojo oppPayload = CreateOpportunityRandomTestData.generateRandomOpportunity();
-	
-		HashMap<String,String> headers = new HashMap<>();
+
+		HashMap<String, String> headers = new HashMap<>();
 		headers.put("Content-Type", "application/json");
-		
+
 		String coEndpoint = "/opportunity";
 		String goEndpoint = "/opportunity/all";
-		HashMap<String,String> queryParam = new HashMap<>();
-		queryParam.put("leadId",prop.getProperty("leadId"));
-		
-		//post request
-		
-		Response createdOpportunityResponse = RestUtils.postReqWithQuery(headers, oppPayload, coEndpoint, queryParam,201);
-		
+		HashMap<String, String> queryParam = new HashMap<>();
+		queryParam.put("leadId", prop.getProperty("leadId"));
+
+		// post request
+
+		Response createdOpportunityResponse = RestUtils.postReqWithQuery(headers, oppPayload, coEndpoint, queryParam,
+				201);
+
 		String resOpportunityId = createdOpportunityResponse.jsonPath().getString("opportunityId");
 		System.out.println("Response Body :" + createdOpportunityResponse.getBody().asPrettyString());
-		RestUtils.validateSchema(createdOpportunityResponse,FileConstants.CREATE_OPPORTUNITY_SCHEMA_PATH);
-		
-		Response getOppResponse = RestUtils.getReq(headers,goEndpoint);
-		System.out.println("Get Response Body :" + getOppResponse.getBody().asPrettyString() );
+		RestUtils.validateSchema(createdOpportunityResponse, FileConstants.CREATE_OPPORTUNITY_SCHEMA_PATH);
+
+		Response getOppResponse = RestUtils.getReq(headers, goEndpoint);
+		System.out.println("Get Response Body :" + getOppResponse.getBody().asPrettyString());
 		List<Object> getAllOpp = getOppResponse.jsonPath().getList("content.opportunityId");
+
+		assertTrue(getAllOpp.contains(resOpportunityId),
+				"New opportunity with OpportunityId " + resOpportunityId + "is not created");
+	}
+	
+	@Test(priority=14)
+	public void verifyOpportunityIsCreatedInDatabase(ITestContext context) {
+		test.set(extent.createTest("verify Opportunity Is Created In Database"));
+		ObjectMapper mapper = new ObjectMapper();
+		OpportunitiesPojo oppPayload = CreateOpportunityRandomTestData.generateRandomOpportunity();
+		HashMap<String,String> headers = new HashMap<>();
+		headers.put("Content-Type", "application/json");
+		String coEndpoint = "/opportunity";
+		HashMap<String,String> queryParam = new HashMap<>();
+		queryParam.put("leadId", prop.getProperty("leadId"));
+		Response createdopportunityResponse = RestUtils.postReqWithQuery(headers, oppPayload, coEndpoint, queryParam, 201);
+		String resOppId = createdopportunityResponse.jsonPath().getString("opportunityId");
+		String resOppName = createdopportunityResponse.jsonPath().getString("opportunityName");
+		context.setAttribute("resOppName", resOppName);
+		context.setAttribute("resOppId", resOppId);
+		//Json schema Validated
+		createdopportunityResponse.then().assertThat().body(JsonSchemaValidator.matchesJsonSchema(new File(FileConstants.CREATE_OPPORTUNITY_SCHEMA_PATH)));
 		
-		assertTrue(getAllOpp.contains(resOpportunityId), "New opportunity with OpportunityId " + resOpportunityId + "is not created");
+	}
+	@Test(priority=15,dependsOnMethods = "verifyOpportunityIsCreatedInDatabase")
+	public void verifyOpportunityExists(ITestContext context) {
+		test.set(extent.createTest("Verify the Opportunity Exists"));
+		HashMap<String,String> headers = new HashMap<>();
+		headers.put("Content-Type", "application/json");
+		String goEndpoint = "/opportunity/all";
+		Response getCreatedOpportunity = RestUtils.getReq(headers, goEndpoint, 200);
+		List<Object> getAllOpp = getCreatedOpportunity.jsonPath().getList("content.opportunityId");
+		assertTrue(getAllOpp.contains(context.getAttribute("resOppId")),"Opportunity not found");
+		
+	}
+	
+	@Test(priority=16,dependsOnMethods="verifyOpportunityExists")
+	public void databaseValidation(ITestContext context) throws SQLException {
+		test.set(extent.createTest("Database Validation for Created Opportunity"));
+		String url = "jdbc:mysql://49.249.28.218:3333/crm";
+		String dbUser = "root@%";
+		String dbPassword = "root";		
+		
+		Connection con = DriverManager.getConnection(url,dbUser,dbPassword);
+		Statement stmt = con.createStatement();
+		
+		String query = "Select * from opportunities where opportunity_id= '"+ context.getAttribute("resOppId") +"'";
+		ResultSet rs = stmt.executeQuery(query);
+		
+		if(rs.next()) {
+			String dbOppName = rs.getString("opportunity_name");
+			String dbOppId = rs.getString("opportunity_id");
+			
+			Assert.assertEquals(dbOppName,context.getAttribute("resOppName"),"DB opportunityName does not match API response!");
+			Assert.assertEquals(dbOppId,context.getAttribute("resOppId"),"DB Opportunity Id does not match API response!");
+		}else {
+			Assert.fail("No record found in DB for OpportunityId" + context.getAttribute("resOppId"));
+		}
+		con.close();
 	}
 }
