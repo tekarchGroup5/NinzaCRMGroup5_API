@@ -86,5 +86,9 @@ public class CreateContactClassic_POJO {
 	public Campaign_POJO getCampaign() {
 		return campaign;
 	}
+	
+	public void setCampaign(Campaign_POJO campaign) {
+	    this.campaign = campaign;
+	}
 
 }
