@@ -35,7 +35,6 @@ import static org.testng.Assert.assertTrue;
 
 public class Opportunity_APITests extends api_BaseTest {
 	private static String oppId;
-	
 
 	// -------------------------------
 	// Create opportunity with Mandatory Fields
@@ -243,6 +242,7 @@ public class Opportunity_APITests extends api_BaseTest {
 		String createdOpp = (String) context.getAttribute("opportunityId");
 		System.out.println(createdOpp);
 		RestAssured.responseSpecification = null;
+
 		given().queryParam("opportunityId", createdOpp).when().delete("/opportunity").then().statusCode(204);
 
 		test.get().pass("Opportunity deleted successfully and verified");
@@ -341,58 +341,63 @@ public class Opportunity_APITests extends api_BaseTest {
 		assertTrue(getAllOpp.contains(resOpportunityId),
 				"New opportunity with OpportunityId " + resOpportunityId + "is not created");
 	}
-	
-	@Test(priority=14)
+
+	@Test(priority = 14)
 	public void verifyOpportunityIsCreatedInDatabase(ITestContext context) {
 		test.set(extent.createTest("verify Opportunity Is Created In Database"));
 		ObjectMapper mapper = new ObjectMapper();
 		OpportunitiesPojo oppPayload = CreateOpportunityRandomTestData.generateRandomOpportunity();
-		HashMap<String,String> headers = new HashMap<>();
+		HashMap<String, String> headers = new HashMap<>();
 		headers.put("Content-Type", "application/json");
 		String coEndpoint = "/opportunity";
-		HashMap<String,String> queryParam = new HashMap<>();
+		HashMap<String, String> queryParam = new HashMap<>();
 		queryParam.put("leadId", prop.getProperty("leadId"));
-		Response createdopportunityResponse = RestUtils.postReqWithQuery(headers, oppPayload, coEndpoint, queryParam, 201);
+		Response createdopportunityResponse = RestUtils.postReqWithQuery(headers, oppPayload, coEndpoint, queryParam,
+				201);
 		String resOppId = createdopportunityResponse.jsonPath().getString("opportunityId");
 		String resOppName = createdopportunityResponse.jsonPath().getString("opportunityName");
 		context.setAttribute("resOppName", resOppName);
 		context.setAttribute("resOppId", resOppId);
-		//Json schema Validated
-		createdopportunityResponse.then().assertThat().body(JsonSchemaValidator.matchesJsonSchema(new File(FileConstants.CREATE_OPPORTUNITY_SCHEMA_PATH)));
-		
+		// Json schema Validated
+		createdopportunityResponse.then().assertThat()
+				.body(JsonSchemaValidator.matchesJsonSchema(new File(FileConstants.CREATE_OPPORTUNITY_SCHEMA_PATH)));
+
 	}
-	@Test(priority=15,dependsOnMethods = "verifyOpportunityIsCreatedInDatabase")
+
+	@Test(priority = 15, dependsOnMethods = "verifyOpportunityIsCreatedInDatabase")
 	public void verifyOpportunityExists(ITestContext context) {
 		test.set(extent.createTest("Verify the Opportunity Exists"));
-		HashMap<String,String> headers = new HashMap<>();
+		HashMap<String, String> headers = new HashMap<>();
 		headers.put("Content-Type", "application/json");
 		String goEndpoint = "/opportunity/all";
 		Response getCreatedOpportunity = RestUtils.getReq(headers, goEndpoint, 200);
 		List<Object> getAllOpp = getCreatedOpportunity.jsonPath().getList("content.opportunityId");
-		assertTrue(getAllOpp.contains(context.getAttribute("resOppId")),"Opportunity not found");
-		
+		assertTrue(getAllOpp.contains(context.getAttribute("resOppId")), "Opportunity not found");
+
 	}
-	
-	@Test(priority=16,dependsOnMethods="verifyOpportunityExists")
+
+	@Test(priority = 16, dependsOnMethods = "verifyOpportunityExists")
 	public void databaseValidation(ITestContext context) throws SQLException {
 		test.set(extent.createTest("Database Validation for Created Opportunity"));
 		String url = "jdbc:mysql://49.249.28.218:3333/crm";
 		String dbUser = "root@%";
-		String dbPassword = "root";		
-		
-		Connection con = DriverManager.getConnection(url,dbUser,dbPassword);
+		String dbPassword = "root";
+
+		Connection con = DriverManager.getConnection(url, dbUser, dbPassword);
 		Statement stmt = con.createStatement();
-		
-		String query = "Select * from opportunities where opportunity_id= '"+ context.getAttribute("resOppId") +"'";
+
+		String query = "Select * from opportunities where opportunity_id= '" + context.getAttribute("resOppId") + "'";
 		ResultSet rs = stmt.executeQuery(query);
-		
-		if(rs.next()) {
+
+		if (rs.next()) {
 			String dbOppName = rs.getString("opportunity_name");
 			String dbOppId = rs.getString("opportunity_id");
-			
-			Assert.assertEquals(dbOppName,context.getAttribute("resOppName"),"DB opportunityName does not match API response!");
-			Assert.assertEquals(dbOppId,context.getAttribute("resOppId"),"DB Opportunity Id does not match API response!");
-		}else {
+
+			Assert.assertEquals(dbOppName, context.getAttribute("resOppName"),
+					"DB opportunityName does not match API response!");
+			Assert.assertEquals(dbOppId, context.getAttribute("resOppId"),
+					"DB Opportunity Id does not match API response!");
+		} else {
 			Assert.fail("No record found in DB for OpportunityId" + context.getAttribute("resOppId"));
 		}
 		con.close();
