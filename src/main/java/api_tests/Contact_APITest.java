@@ -3,7 +3,16 @@ package api_tests;
 import static io.restassured.RestAssured.given;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.fasterxml.jackson.core.exc.StreamReadException;
@@ -12,7 +21,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.javafaker.Faker;
 
 import api_POJOS.CreateContactClassic_POJO;
-
+import io.restassured.RestAssured;
 import io.restassured.mapper.ObjectMapperType;
 import io.restassured.response.Response;
 import randomDataGenerator.CreateContact;
@@ -662,7 +671,25 @@ public class Contact_APITest extends api_BaseTest {
 
 			    // Step 2: Update some fields
 			    
-			   contact.setMobile("!@#$%%");
+			    
+			 // Example invalid mobile numbers
+			    List<String> invalidMobiles = Arrays.asList(
+			        faker.lorem().characters(8),                    // Random letters
+			        faker.lorem().characters(10, true, true),       // Letters + digits
+			        "!@#" + faker.number().digits(4),               // Special characters + digits
+			        faker.number().digits(15),                      // Too long
+			        faker.number().digits(2),                       // Too short
+			        "",                                             // Empty string
+			        "123.456",                                      // Float as string
+			        faker.internet().emailAddress(),                // Completely unrelated format
+			        "null"                                          // Literal string "null"
+			    );
+
+			    // Pick a random invalid number
+			    String invalidMobile = invalidMobiles.get(new Random().nextInt(invalidMobiles.size()));
+			    
+			  // contact.setMobile("!@#$%%*");
+			    contact.setMobile(invalidMobile);
 			    String mobile = contact.getMobile();
 			   
 
@@ -683,7 +710,7 @@ public class Contact_APITest extends api_BaseTest {
 
 			    // Step 4: Assertions to validate updated fields
 			    assert updatedContactPayload.getContactId().equals(contactId): "contact ID mismatch after update";
-			    assert updatedContactPayload.getEmail().equals(mobile) : "Oraganization name not updated correctly";
+			    assert updatedContactPayload.getMobile().equals(mobile): "Mobile is not updated correctly";
 			   
 			    test.get().pass("Invalid Mobile Number datatype Format");
 
@@ -691,7 +718,309 @@ public class Contact_APITest extends api_BaseTest {
 			
 		}
 	  
+	  //TC: it s a bug
+	  @Test(priority=20,enabled=true)
+		public void invalidOrganizationNameDatatypeTC026() throws StreamReadException, DatabindException, IOException{
+			
+			 test.set(extent.createTest("Invalid Organization Name datatype "));
+
+			 
+
+			    // Step 1: Create a Contact first
+			 CreateContactClassic_POJO contact = CreateContact.generateRandomContact();
+			    String contactId = postContact(contact);
+			    System.out.println("contactId is :"+contactId);
+
+			    // Step 2: Update some fields
+			    
+			    List<String> invalidOrgNames = Arrays.asList(
+			    	    faker.number().digits(5),
+			    	    "!@#" + faker.lorem().characters(5),
+			    	    "",
+			    	    faker.lorem().characters(300),
+			    	    faker.internet().emailAddress(),
+			    	    "null",
+			    	    String.valueOf(faker.bool().bool()),
+			    	    faker.regexify("[0-9]{3}[A-Z]{2}[^a-zA-Z0-9]")
+			    	);
+
+			    	String invalidOrgName = invalidOrgNames.get(new Random().nextInt(invalidOrgNames.size()));
+			    	contact.setOrganizationName(invalidOrgName);
+			  // contact.setOrganizationName("100");
+			    String orgName = contact.getOrganizationName();
+			 
+			    // Step 3: Send PUT request and capture response
+			    CreateContactClassic_POJO updatedContactPayload = 
+			    	given()
+			    	.header("accept", "application/json")
+			            .queryParam("contactId", contactId)
+			            .queryParam("campaignId", prop.getProperty("campaignId"))
+			            .body(contact, ObjectMapperType.JACKSON_2)
+			        .when()
+			            .put("/contact")
+			        .then()
+			            .log().all()
+			            .statusCode(500)
+			            .extract()
+			            .as(CreateContactClassic_POJO.class, ObjectMapperType.JACKSON_2);
+
+			    // Step 4: Assertions to validate updated fields
+			    assert updatedContactPayload.getContactId().equals(contactId): "contact ID mismatch after update";
+			    assert updatedContactPayload.getOrganizationName().equals(orgName): "Oraganization name not updated correctly";
+			   
+			    test.get().pass("Invalid Organization Name datatype");
+
+			
+			
+		}
+	  @Test(priority=21,enabled=true)
+		public void InvalidTitleNamedatatypeTC027() throws StreamReadException, DatabindException, IOException{
+			
+			 test.set(extent.createTest("Invalid Title Name datatype "));
+
+			 
+
+			    // Step 1: Create a Contact first
+			 CreateContactClassic_POJO contact = CreateContact.generateRandomContact();
+			    String contactId = postContact(contact);
+			    System.out.println("contactId is :"+contactId);
+
+			    // Step 2: Update some fields
+			    
+			    List<String> invalidTitleNames = Arrays.asList(
+			    	    faker.number().digits(5),
+			    	    "!@#" + faker.lorem().characters(5),
+			    	    "",
+			    	    faker.lorem().characters(300),
+			    	    faker.internet().emailAddress(),
+			    	    "null",
+			    	    String.valueOf(faker.bool().bool()),
+			    	    faker.regexify("[0-9]{3}[A-Z]{2}[^a-zA-Z0-9]")
+			    	);
+
+			    	String invalidTitleName = invalidTitleNames.get(new Random().nextInt(invalidTitleNames.size()));
+			    	contact.setTitle(invalidTitleName);
+			  // contact.setOrganizationName("100");
+			    String titleName = contact.getTitle();
+			 
+			    // Step 3: Send PUT request and capture response
+			    CreateContactClassic_POJO updatedContactPayload = 
+			    	given()
+			    	.header("accept", "application/json")
+			            .queryParam("contactId", contactId)
+			            .queryParam("campaignId", prop.getProperty("campaignId"))
+			            .body(contact, ObjectMapperType.JACKSON_2)
+			        .when()
+			            .put("/contact")
+			        .then()
+			            .log().all()
+			            .statusCode(500)
+			            .extract()
+			            .as(CreateContactClassic_POJO.class, ObjectMapperType.JACKSON_2);
+
+			    // Step 4: Assertions to validate updated fields
+			    assert updatedContactPayload.getContactId().equals(contactId): "contact ID mismatch after update";
+			    assert updatedContactPayload.getTitle().equals(titleName): "Title is not updated correctly";
+			   
+			    test.get().pass("Invalid Title Name datatype");
+
+			
+			
+		}
+	  @Test(priority =22,enabled=true)//Test is working
+		public void VerifyResponseWhenDeletingtheSamecontacttwiceTC_029() throws IOException {
+		    test.set(extent.createTest("Verify response when deleting the same contact twice"));
+		    CreateContactClassic_POJO contactPayload = CreateContact.generateRandomContact();
+		    String contactId = postContact(contactPayload);
+		    System.out.println("Created contact ID: " + contactId);
+
+		    // Step 2: Send DELETE request
+		    given()
+		    .header("accept", "application/json")
+		        .queryParam("contactId", contactId)
+		        .queryParam("campaignId", prop.getProperty("campaignId"))
+		    .when()
+		        .delete("/contact")
+		    .then()
+		        .log().all()
+		        .statusCode(204); 
+		  
+		    // Step 2: Send DELETE request
+		    given()
+		    .header("accept", "application/json")
+		        .queryParam("contactId", contactId)
+		        .queryParam("campaignId", prop.getProperty("campaignId"))
+		    .when()
+		        .delete("/contact")
+		    .then()
+		        .log().all()
+		        .statusCode(500); 
+		  
+		    test.get().pass("Verify response when deleting the same contact twice");
+		}
 	  
+	  @Test(priority = 23,enabled=true)//Test is working
+		public void DeletecontactwithmissingcontactIdTC_029() throws IOException {
+		    test.set(extent.createTest("Delete contact with missing contactId"));
+		    CreateContactClassic_POJO contactPayload = CreateContact.generateRandomContact();
+		    String contactId = postContact(contactPayload);
+		    System.out.println("Created contact ID: " + contactId);
+
+		    // Step 2: Send DELETE request
+		    given()
+		    .header("accept", "application/json")
+		      //  .queryParam("contactId", contactId)
+		        .queryParam("campaignId", prop.getProperty("campaignId"))
+		    .when()
+		        .delete("/contact")
+		    .then()
+		        .log().all()
+		        .statusCode(500); 
+		  
+		    
+		    test.get().pass("Delete contact with missing contactId");
+		}
+	  @Test(priority = 24,enabled=true)//Test is working
+		public void DeletecontactwithmissingcontactIdTC_030() throws IOException {
+		    test.set(extent.createTest("Delete contact with missing contactId"));
+		    CreateContactClassic_POJO contactPayload = CreateContact.generateRandomContact();
+		    String contactId = postContact(contactPayload);
+		    System.out.println("Created contact ID: " + contactId);
+
+		    // Step 2: Send DELETE request
+		    given()
+		    .header("accept", "application/json")
+		      //  .queryParam("contactId", contactId)
+		        .queryParam("campaignId", prop.getProperty("campaignId"))
+		    .when()
+		        .delete("/contact")
+		    .then()
+		        .log().all()
+		        .statusCode(500); 
+		  
+		    
+		    test.get().pass("Delete contact with missing contactId");
+		}
+	  @Test(priority = 25,enabled=true)//Test is working
+		public void DeleteContactWithInvalidContactIdformatTC_031() throws IOException {
+		    test.set(extent.createTest("Delete contact with invalid contactId format"));
+		    CreateContactClassic_POJO contactPayload = CreateContact.generateRandomContact();
+		    String contactId = postContact(contactPayload);
+		    System.out.println("Created contact ID: " + contactId);
+
+		    // Step 2: Send DELETE request
+		    given()
+		    .header("accept", "application/json")
+		       .queryParam("contactId", 34)
+		        .queryParam("campaignId", prop.getProperty("campaignId"))
+		    .when()
+		        .delete("/contact")
+		    .then()
+		        .log().all()
+		        .statusCode(500); 
+		  
+		    
+		    test.get().pass("Delete contact with invalid contactId format");
+		}
+	  
+	  @Test(priority = 26,enabled=true)//Test is working
+		public void UnauthorizedAccessToDeleteContact_032() throws IOException {
+		    test.set(extent.createTest("Unauthorized access to delete contact"));
+		    CreateContactClassic_POJO contactPayload = CreateContact.generateRandomContact();
+		    String contactId = postContact(contactPayload);
+		    System.out.println("Created contact ID: " + contactId);
+
+		    // Step 2: Send DELETE request
+		    given()
+		    .header("accept", "application/json")
+		       .queryParam("contactId", 34)
+		        .queryParam("campaignId", prop.getProperty("campaignId"))
+		    .when()
+		        .delete("/contact")
+		    .then()
+		        .log().all()
+		        .statusCode(401); 
+		  
+		    
+		    test.get().pass("Unauthorized access to delete contact");
+		}
+	  
+	  @Test(priority = 27,enabled=true)//Test is working
+		public void DeletecontactwithnonexistentcontactId_033() throws IOException {
+		    test.set(extent.createTest("Delete contact with non-existent contactId"));
+		    CreateContactClassic_POJO contactPayload = CreateContact.generateRandomContact();
+		    String contactId = postContact(contactPayload);
+		    System.out.println("Created contact ID: " + contactId);
+		    contactId="CAM13056";
+
+		    // Step 2: Send DELETE request
+		    given()
+		    .header("accept", "application/json")
+		       .queryParam("contactId", contactId)
+		        .queryParam("campaignId", prop.getProperty("campaignId"))
+		    .when()
+		        .delete("/contact")
+		    .then()
+		        .log().all()
+		        .statusCode(500); 
+		  
+		    
+		    test.get().pass("Delete contact with non-existent contactId");
+		}
+	  @Test(priority = 28,enabled=true)//Test is working
+			public void Verifyunauthorizedaccess_034() throws IOException {
+			    test.set(extent.createTest("Verify unauthorized access"));
+			  
+
+			    Response response = 
+			    	given()
+			    	 
+			        .when()
+			        
+			            .get("/contact/all-contacts")
+			        .then()
+			            .log().all()
+			            .statusCode(200) // Assert request success
+			            .extract()
+			            .response();
+			   
+			    
+			    test.get().pass("Verify unauthorized access");
+			}
+	  
+	  @Test(priority = 29,enabled=true)//Test is working
+		public void CreateContactAndVerifyItExistEndToEndScenario_029() throws IOException, SQLException {
+		    test.set(extent.createTest("Database Validation for Created contact"));
+		    CreateContactClassic_POJO contactPayload = CreateContact.generateRandomContact();
+		    String contactId = postContact(contactPayload);
+		    System.out.println("Created contact ID: " + contactId);
+		   
+		    
+		    String url = "jdbc:mysql://49.249.28.218:3333/crm";
+			String dbUser = "root@%";
+			String dbPassword = "root";
+
+			Connection con = DriverManager.getConnection(url, dbUser, dbPassword);
+			Statement stmt = con.createStatement();
+			
+			String query = "Select * from contacts where contact_id= '" + contactId + "'";
+			ResultSet rs = stmt.executeQuery(query);
+
+			if (rs.next()) {
+				
+				String dbConId = rs.getString("contact_id");
+
+				
+				Assert.assertEquals(dbConId, contactId,
+						"DB Contact Id does not match API response!");
+			} else {
+				Assert.fail("No record found in DB for ContactId" +contactId );
+			}
+			con.close();
+		  
+		    
+		    test.get().pass("Database Validation for Created contact");
+		}
 	// Helper method to get the contact ID after creation
 	private String postContact(CreateContactClassic_POJO contact) {
 		String campaignId = prop.getProperty("campaignId");
